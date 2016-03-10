@@ -1,0 +1,21 @@
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+## File-based project format:
+*.ipr
+*.iws
+
+
+## Directory-based project format:
+.idea/
+
+*.iml
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
