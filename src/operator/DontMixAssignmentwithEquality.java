@@ -8,9 +8,10 @@ package operator;
 public class DontMixAssignmentwithEquality {
     public static void main(String[] args) {
         // Assignment operator returns assigned value
-        int _int = 10;
+        int _int1 = 10;
+        int _int2 = (_int1=50);             // int2 => 50
         boolean _bool=true;
-        System.out.println(_int=30);        // prints 30
+        System.out.println(_int1=30);       // prints 30
         System.out.println(_bool=false);    // prints false
         System.out.println(_bool==false);   // prints true
 
