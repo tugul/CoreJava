@@ -3,7 +3,7 @@ package casting;
 /**
  * Compound assignment operator does implicit cast
  */
-public class CompoundAssignmentOperator {
+public class CompoundAssignmentCast {
     public static void main(String[] args) {
         long _long = 10;
         int _int = 10;
