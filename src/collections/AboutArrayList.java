@@ -28,11 +28,11 @@ public class AboutArrayList {
         list1.add(true);
         list1.add(10);
         list1.add(0, Month.APRIL);          // insert at the index and shift 1 back all backward elements
-        list1.add(4, 's');                  // insert at the end, same as just add(object);
+        list1.add(list1.size(), 's');       // insert at the end, same as just add(object);
 
-        System.out.println(list1.size());   // 4
+        System.out.println(list1.size());   // 5
         System.out.println(list1);          // [APRIL, bird, true, 10, s]
-        System.out.println(list1.get(1));   // true
+        System.out.println(list1.get(1));   // bird
 
         list1.set(2, 4.5);
         System.out.println(list1);          // [APRIL, bird, 4.5, 10, s]
@@ -43,7 +43,7 @@ public class AboutArrayList {
         list1.remove(1);
         System.out.println(list1);          // [APRIL, 10, s]
 
-        // Equals()
+        // Equals() check contents, not reference
         ArrayList list6 = new ArrayList(100);
         System.out.println(list6.size());           // still 0, declared with initial capacity 10
         System.out.println(list2.equals(list6));    // true
