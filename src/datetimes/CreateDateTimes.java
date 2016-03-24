@@ -3,8 +3,6 @@ package datetimes;
 import java.time.*;
 
 /**
- * Created by bbn on 3/13/16.
- *
  * LocalTime - contains only time, no date info
  * LocalDate - contains only date, no time info
  * LocalDateTime - contains date and time
