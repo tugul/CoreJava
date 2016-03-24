@@ -16,9 +16,9 @@ public class AboutArray {
         int c[] = new int[5];
         int d []= new int[5];
 
-        // Arry size must not be specified if array is initialized on declaration
+        // Array size must not be specified if array is initialized on declaration
         int[] a1 = new int[] { 1, 2, 3, 4 };
-//        int[] a2 = new int[4] { 1, 2, 3, 4}; // DOES NOT COMPILE
+        int[] a2 = new int[4] { 1, 2, 3, 4}; // DOES NOT COMPILE
         int[] a3 = { 1, 2, 3, 4}; // anonymous initialization, no type and no size
 
         // Multi-dimensional array
@@ -26,11 +26,13 @@ public class AboutArray {
         // At least first dimension size must be specified
         int[][] b1 = new int[5][5];
         int[][] b2 = new int[5][];
-//        int[][] b3 = new int[][];       // DOES NOT COMPILE
-//        int[][] b4 = new int[][5];      // DOES NOT COMPILE
+        int[][] b3 = new int[][];       // DOES NOT COMPILE
+        int[][] b4 = new int[][5];      // DOES NOT COMPILE
 
-        int[][] ar = new int[][] {{1, 2}, {3}, {4, 5, 6}};
-        ar[0] = new int[10];
+        // Size must not be specified for declaration with initialization
+        int[][] ar1 = new int[][] {{1, 2}, {3}, {4, 5, 6}};
+        int[][] ar2 = {{1, 2}, {3}, {4, 5, 6}};
+        ar1[0] = new int[10];
 
         int[][] c1; // 2D array
         int[] c2[]; // 2D array
@@ -41,8 +43,8 @@ public class AboutArray {
         String[] strings = {"strvalue"};
         Object[] objects = strings;
         String[] anotherStrings = (String[]) objects; // Cast is mandatory
-//        anotherStrings[0] = new StringBuilder();    // DOES NOT COMPILE, StringBuilder to String
-//        objects[0] = new StringBuilder();       // Runtime exception, StringBuilder to String
+        anotherStrings[0] = new StringBuilder();    // DOES NOT COMPILE, StringBuilder to String
+        objects[0] = new StringBuilder();       // Runtime exception, StringBuilder to String
 
 
         // Sort and search in array
