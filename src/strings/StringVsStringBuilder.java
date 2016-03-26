@@ -30,5 +30,9 @@ public class StringVsStringBuilder {
         b.append(5);
         b.append((String)null);
         b.append((StringBuilder)null);
+
+        // Similarity is method chaining which can be done on both
+        String st = " abc ".trim().toUpperCase().concat("D").substring(2);  // CD
+        StringBuilder sbr = new StringBuilder().append("ABC").reverse();    // CBA
     }
 }
