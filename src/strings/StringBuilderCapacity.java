@@ -17,13 +17,18 @@ public class StringBuilderCapacity {
         System.out.println("Capacity a: " + a.capacity());  // default(16)  abc(3) = 19
         System.out.println("Capacity b: " + b.capacity());  // given size 50
         System.out.println("Capacity c: " + c.capacity());  // default(16)  empty = 16
-        
-/*      abcdefg
+
+        // String, StringBuilder both have length() method
+
+/*
+        Below is output
+
+        abcdefg
         Length: 7
         Capacity a: 19
         Capacity b: 50
         Capacity c: 16
-        */
+*/
     }
 
 }
