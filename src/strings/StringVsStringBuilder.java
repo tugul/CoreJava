@@ -26,5 +26,9 @@ public class StringVsStringBuilder {
 
         StringBuilder b = new StringBuilder("ab");
         b.append("cd");     // abcd
+        b.append(true);
+        b.append(5);
+        b.append((String)null);
+        b.append((StringBuilder)null);
     }
 }
