@@ -13,7 +13,7 @@ class GeneralWithTwo <T, e> {
     e e;
 }
 
-class AnotherGeneral <A, b, C> {
+class AnotherGeneral <A, b,C, d extends C> {
     A a;
     b b;
     C c;
