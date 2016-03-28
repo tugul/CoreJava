@@ -3,11 +3,11 @@ package generics;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
- * Wildcard (?) can be used to access any type
- * but can't change value of it.
- * With bounded wildcard, we can go over mismatching types of inherited class:
+ * Wildcard (?) can be used to access any type, but can't change value of it.
+ * Bounded wildcard, we can limit the anonymity through inheritance:
  *
  * refer: https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.html
  */
@@ -40,8 +40,12 @@ public class GenericWildcard {
 
         List<Number>           numbers1 = new ArrayList<Integer>();  // DOES NOT COMPILE
         List<? extends Number> numbers2 = new ArrayList<Integer>();  // COMPILES
+        numbers2.add(new Integer(4));                                // DOES NOT COMPILE, can't change value
 
         List<Integer>         integers1 = new ArrayList<Number>();  // DOES NOT COMPILE
         List<? super Integer> integers2 = new ArrayList<Number>();  // COMPILES
+        List<? super Integer> integers3 = new ArrayList<Object>();  // COMPILES
+        integers3.add(new Integer(4));                              // COMPILES, the lowest possible type
+        integers3.add(new Object());                                // DOES NOT COMPILE, not the only possible type
     }
 }
