@@ -1,7 +1,7 @@
 package constructor;
 
 /**
- * First line in a constructor is implicit call (if not explicitly written) to parent class's constructor
+ * First line in a constructor is implicit call (if not explicitly written) to own other constructors or parent class's constructor
  * If parent class doesn't have default constructor, child constructor must EXPLICITLY call parent's non default constructor
  */
 
@@ -11,10 +11,10 @@ class Animal {  // Does not have default constructor
 }
 
 class Dog extends Animal {
-    Dog (){}          // DOES NOT COMPILE
+    //Dog (){}          // DOES NOT COMPILE
 
     Dog() {
-        super(6);     // Mandatory call to parent's constructor
+        this(5); //super(6);     // Mandatory call to parent's constructor
     }
 
     Dog(int a) {
