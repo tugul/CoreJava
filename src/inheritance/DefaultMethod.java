@@ -10,18 +10,22 @@ package inheritance;
  * - Optional to override default method in implementing class
  */
 interface ICan {
-    void implementIt();
+    int field = 10;     // must initialized, automatically public final static
 
-    default void doIt() {
-        System.out.println("Just do it!");
-    }
+    void implementIt(); // automatically public abstract
+    default void doIt() { System.out.println("Just do it!"); }
 }
 
 public class DefaultMethod implements ICan {
     public void implementIt() { System.out.println("Implemented it"); }
 
     public static void main(String[] args) {
-        new DefaultMethod().doIt();         // Just do it!
-        new DefaultMethod().implementIt();  // Implemented it
+        System.out.println(field);                      // 10
+        System.out.println(ICan.field);                 // 10
+        System.out.println(DefaultMethod.field);        // 10
+        System.out.println(new DefaultMethod().field);  // 10
+
+        new DefaultMethod().doIt();         // default implementation executed
+        new DefaultMethod().implementIt();  // overridden implementation executed
     }
 }
