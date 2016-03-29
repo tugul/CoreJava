@@ -1,7 +1,7 @@
 package inheritance;
 
 /**
- * IInterface is abstract type, so cannot instantiated
+ * Interface is abstract type, so cannot instantiated
  * Always 'abstract' and public or default when not specified. Making it final/private/protected won't compile
  * Can be nested into another interface or class. Nested interface can be private or protected
  * Must not have any initializer
@@ -11,7 +11,8 @@ package inheritance;
  * Its all fields are always 'public static final' (constant), so must be initialized
  *
  * Methods
- * Its non-default methods are 'public abstract'. Making them final/private/protected won't compile
+ * All methods of interface are 'public', automatically.
+ * All non-default methods are 'abstract'. Making them final/private/protected won't compile
  */
 interface IAnotherInterface {
     int val = 5;   // static final
