@@ -2,9 +2,9 @@ package inheritance;
 
 /**
  *
- * In scenario where a class or interface using two interfaces which have same methods:
+ * In scenario where a class implementing or interface extending two interfaces which have same methods:
  * 1. Static methods with same signature won't conflict
- * 2. Default methods with same signature won't conflict. Resolution is to override the method
+ * 2. Default methods with same signature will conflict. Resolution is to override the method
  *
  */
 
