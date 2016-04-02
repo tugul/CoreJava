@@ -3,11 +3,13 @@ package nested;
 /**
  * Anonymous inner class / Anonymous class
  * - Doesn't have name and defined in a method
- * - Useful when no need to create separate class for implementing interface because it will be used only once
- * - Mainly for interface implementation to be used locally in a method
- * - It can implement interface or extend class (abstract/concrete)
- * - Its implementation can not add new method or field, but not accessible from outside
+ * - Implements interface or extend class (abstract/concrete)
+ * - Can't have constructor or static initializer
+ * - Can have instance initializer, local classes, new method or field, but not accessible from outside
  *
+ * Usage:
+ * - When no need to create separate class for implementing interface because it will be used only once
+ * - Mainly for interface implementation to be used locally in a method
  */
 
 interface A {
