@@ -1,4 +1,4 @@
-package inheritance;
+package interfaces;
 
 /**
  * Static method of interface

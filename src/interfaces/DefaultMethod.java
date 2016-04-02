@@ -1,4 +1,4 @@
-package inheritance;
+package interfaces;
 
 /**
  * As introduced in Java 8, a method in interface can have a body and is called default method.

@@ -1,4 +1,4 @@
-package inheritance;
+package classes;
 
 /**
  * Final class

@@ -1,4 +1,4 @@
-package inheritance;
+package interfaces;
 
 /**
  * Interface is abstract type, so cannot instantiated
