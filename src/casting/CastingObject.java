@@ -20,6 +20,9 @@ public class CastingObject {
         A a1 = new A();
         B b1 = (B)a1;     // Compiler allows as they are related, But runtime throws java.lang.ClassCastException
 
+        if (a1 instanceof B)    // It is safe to check if actual instance is of B
+            b1 = (B)a1;
+
         A a2 = new B();
         B b2 = (B)a2;     // a2 refers to object of B class, so can reclaim
 
