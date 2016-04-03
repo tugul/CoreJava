@@ -1,4 +1,4 @@
-package inheritance;
+package methods;
 
 /**
  * Method overriding rule
