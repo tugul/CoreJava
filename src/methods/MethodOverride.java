@@ -51,7 +51,7 @@ class B extends A {
     }
 }
 
-public class OverrideMethod {
+public class MethodOverride {
     public static void main(String[] args) {
         A a = new B();
         a.instanceMethod();     // Instance method in B
