@@ -28,6 +28,10 @@ public class AboutArray {
         int[][] b2 = new int[5][];
         int[][] b3 = new int[][];       // DOES NOT COMPILE
         int[][] b4 = new int[][5];      // DOES NOT COMPILE
+        int[][] c1[] = new int[5][5][];
+        int[][] c2[] = new int[][][5];       // DOES NOT COMPILE
+        int[][] c3[] = new int[5][][5];      // DOES NOT COMPILE
+        int[][] c4[] = new int[][5][5];      // DOES NOT COMPILE
 
         // Size must not be specified for declaration with initialization
         int[][] ar1 = new int[][] {{1, 2}, {3}, {4, 5, 6}};
