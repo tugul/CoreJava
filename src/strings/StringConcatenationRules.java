@@ -20,6 +20,8 @@ public class StringConcatenationRules {
         String b = 10 + 5 + "years old";    // 15years old
         String c = true + "love";           // truelove
         String d = false + true + "live";   // DOES NOT COMPILE, + can't be applied to booleans
+        String e = 4 + Math.PI;             // DOES NOT COMPILE, other than string can't assign
+
 
         // concat(String str)
         String a = "globe";

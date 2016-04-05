@@ -17,6 +17,7 @@ public class StringEquality {
         StringBuilder sb3 = sb1;
         System.out.println(sb1 == sb2); // false
         System.out.println(sb1 == sb3); // true
+        System.out.println(sb1 == a);   // DOES NOT COMPILE, mismatch types (String, StringBuilder)
 
         StringBuilder sb4 = sb1.append("def");
         sb4.append("xyz");
