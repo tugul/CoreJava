@@ -20,5 +20,17 @@ public class NumericLaterals {
 
         short _short1 = 83232;      // DOES NOT COMPILE, int to short
         short _short2 = (short)83223; // COMPILES, explicit cast required
+
+        // Binary integer
+        int a1 = 0B1011;
+        int a2 = 0B2011;    // DOES NOT COMPILE, binary number digits must be 0 or 1
+        int a3 = 0B111111111111111111111111111111111111111111111100000; // DOES NOT COMPILE, Integer number too large
+        int a4 = (int)0B111111111111111111111111111111111111111111111100000L;   // Add L mark and cast explicitly
+        long b1 = 0B111111111111111111111111111111111111111111111100000L;
+
+        // Octal integer
+        int c1 = 08;                // DOES NOT COMPILE, octal number digits must be between 0-7
+        int c2 = 0761276125422121;  // DOES NOT COMPILE, Integer number too large
+        long d1 = 0761276125422121L;
     }
 }

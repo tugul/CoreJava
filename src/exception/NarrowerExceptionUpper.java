@@ -10,7 +10,7 @@ package exception;
 class MisMatched extends RuntimeException {}
 class MisMatchedColor extends MisMatched {}
 
-public class NarrowierExceptionUpper {
+public class NarrowerExceptionUpper {
     static void meet(){}
 
     public static void main(String[] args) {
