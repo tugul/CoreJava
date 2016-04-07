@@ -5,7 +5,8 @@ package methods;
  * - Overriding method must have same signature as method in parent class
  * - Overriding method must be same or more accessible than method in parent class
  * - Overriding method must not throw new or broader checked exception than exceptions thrown in parent method
- * - If method returns value, it must be same or subclass of that type returned in parent class
+ * - If method returns a object, it must be same or subclass of that object's type returned in parent class
+ * - If method returns primitive, it must exactly match with primitive type returned in parent class
  *
  * For static method, it is called hiding method
  *  - Static method must remain static when overridden, same for non-static methods
