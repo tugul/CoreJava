@@ -3,6 +3,17 @@ package casting;
 /**
  * Any integral numbers are deemed as int
  * Any floating-points are deemed as double
+ *
+ * boolean  - 1 bit
+ * char     - 8 bit
+ * byte     - 8 bit
+ * short    - 16 bit
+ * int      - 32 bit
+ * long     - 64 bit
+ *
+ * float    - 32 bit
+ * double   - 64 bit
+ *
  */
 public class NumericLaterals {
     public static void main(String[] args) {
@@ -10,16 +21,30 @@ public class NumericLaterals {
         long _long2 = 3234234234;    // DOES NOT COMPILE, too large for int lateral
         long _long3 = 3234234234L;   // COMPILES
 
-        float _float1 = 10.5;    // DOES NOT COMPILE, double to float
-        float _float2 = 10.5f;   // COMPILES
+        float _float1 = 10.5;    // DOES NOT COMPILE, implicit double to float
+        float _float2 = 10.5d;   // DOES NOT COMPILE, explicit double to float
+        float _float3 = 10.5f;   // COMPILES
 
         int _int1 = 55f;            // DOES NOT COMPILE, float to int
         int _int2 = 55L;            // DOES NOT COMPILE, long to int
         int _int3 = (int)55f;       // COMPILES
         int _int4 = (int)55L;       // COMPILES
 
-        short _short1 = 83232;      // DOES NOT COMPILE, int to short
-        short _short2 = (short)83223; // COMPILES, explicit cast required
+        byte _byte1 = 15;
+        byte _byte2 = Byte.MAX_VALUE;       // 127
+        byte _byte3 = Byte.MAX_VALUE+1;     // Over limit of byte
+
+        short _short1 = 832;        // COMPILES, under short range, Short.MAX_VALUE = 32767
+        short _short2 = 83232;      // DOES NOT COMPILE, int lateral over limit of short
+        short _short3 = (short)83223; // COMPILES, explicit cast required
+
+        int i = 100;
+        float f = i;
+        i = (int)f;         // Int to float requires explicit cast
+
+        long l = 100;
+        double d = l;
+        l = (long)d;        // Double to long requires explicit cast
 
         // Binary integer
         int a1 = 0B1011;
