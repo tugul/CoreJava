@@ -1,4 +1,4 @@
-package nested;
+package classes.nested;
 
 /**
  * Anonymous inner class / Anonymous class
