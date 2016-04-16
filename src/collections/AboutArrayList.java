@@ -19,6 +19,7 @@ public class AboutArrayList {
         // Generic class
         ArrayList<String> list4 = new ArrayList<String>();
         ArrayList<String> list5 = new ArrayList<>(); // second part is not mandatory
+        ArrayList<String> list7 = new ArrayList();   // second part is not mandatory
 
         // ArrayList implements interface List
         List<Integer> numbers = new ArrayList<>();

@@ -15,7 +15,7 @@ public class CatchThrowsException {
             cte.methodOne();;
         }
         catch (newException e){
-            cte.methodOne(); // DOES NOT COMPILE
+            cte.methodOne(); // DOES NOT COMPILE, unhandled checked exception
         }
         catch (Exception e){
             cte.methodTwo();
