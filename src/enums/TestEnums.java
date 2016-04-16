@@ -17,7 +17,8 @@ package enums;
  */
 
 enum Season {
-    Summer, Autumn, Winter, Spring;
+    Summer, Autumn, Winter { void printWeather() { System.out.println("cold");}}, Spring;
+    void printWeather() { System.out.println("mild"); }
 }
 
 enum JobPosition {
