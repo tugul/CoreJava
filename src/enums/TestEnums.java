@@ -7,6 +7,7 @@ package enums;
  * - Enums are public(or default) static final. So can't be extended
  * - Enums can have members: fields, constructor and methods
  * - Enum elements must be first, before any other members if any.
+ * - If enum defines abstract method, each constant element must override it
  * - Its constructor can be only private. Making it protected or public lead compilation error
  *
  * Methods:
@@ -20,7 +21,11 @@ enum Season {
 }
 
 enum JobPosition {
-    Developer(100), Manager(150), Architect(130), CTO("Technical Officer");
+    Developer(100)  { void sayMyName() { System.out.println("Devo"); } },
+    Manager(150)    { void sayMyName() { System.out.println("Mana"); } },
+    Architect(130)  { void sayMyName() { System.out.println("Arch"); } },
+    CTO("Technical Officer") { void sayMyName() { System.out.println("Ofi"); } };
+
     int salary;
     String description;
 
@@ -31,14 +36,22 @@ enum JobPosition {
     JobPosition(String description) {
         this.description = description;
     }
+
+    // Abstract method must be overridden in each constant
+    abstract void sayMyName();
+
+    void sayMySalary() { System.out.println("No way!"); }
 }
 
 public class TestEnums {
     public static void main(String[] args) {
-        System.out.println(JobPosition.Architect.name());           // Architect
-        System.out.println(JobPosition.valueOf("Developer"));       // Developer
-        System.out.println(JobPosition.CTO.valueOf("Developer"));   // Developer
+        JobPosition devOne = JobPosition.valueOf("Developer");
+        JobPosition devTwo = JobPosition.CTO.valueOf("Developer");
+        JobPosition devTre = JobPosition.CTO.valueOf("developer"); // IllegalArgument exception, no matching constant
+        devOne.sayMyName();     // Devo
+        devTwo.sayMySalary();   // No way!
 
+        System.out.println(JobPosition.Architect.name());         // Architect
         System.out.println(JobPosition.CTO.description);          // Technical Officer
         System.out.println(JobPosition.Architect.description);    // null
         System.out.println(JobPosition.values().length);          // 4
