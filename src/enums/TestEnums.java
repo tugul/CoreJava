@@ -24,7 +24,10 @@ enum JobPosition {
     Developer(100)  { void sayMyName() { System.out.println("Devo"); } },
     Manager(150)    { void sayMyName() { System.out.println("Mana"); } },
     Architect(130)  { void sayMyName() { System.out.println("Arch"); } },
-    CTO("Technical Officer") { void sayMyName() { System.out.println("Ofi"); } };
+    CTO("Technical Officer") {
+        void sayMyName() { System.out.println("Ofi"); }
+        void sayMySalary() { System.out.println("millions");}
+    };
 
     int salary;
     String description;
@@ -46,10 +49,11 @@ enum JobPosition {
 public class TestEnums {
     public static void main(String[] args) {
         JobPosition devOne = JobPosition.valueOf("Developer");
-        JobPosition devTwo = JobPosition.CTO.valueOf("Developer");
-        JobPosition devTre = JobPosition.CTO.valueOf("developer"); // IllegalArgument exception, no matching constant
-        devOne.sayMyName();     // Devo
-        devTwo.sayMySalary();   // No way!
+        JobPosition IamCto = JobPosition.Manager.valueOf("CTO");
+        JobPosition devTwo = JobPosition.CTO.valueOf("developer"); // IllegalArgument exception, no matching constant
+        devOne.sayMyName();             // Devo
+        devOne.sayMySalary();           // No way!
+        IamCto.sayMySalary();           // millions (overridden)
 
         System.out.println(JobPosition.Architect.name());         // Architect
         System.out.println(JobPosition.CTO.description);          // Technical Officer
