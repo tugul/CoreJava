@@ -10,7 +10,12 @@ package methods;
  *
  * - In case of autoboxing
  * Java call most specifically matching method. If can't find, it looks for next ONE level closer one
- *
+ * Generally, it follows below one of below step to match parameter:
+ * : Exact match by parameter type
+ * : Match with superclass type
+ * : Convert to larger primitive type
+ * : Convert to autoboxed type/Wrapper class
+ * : Varargs
  */
 public class MethodOverload {
     // Below are valid overloading of methods, except for last one

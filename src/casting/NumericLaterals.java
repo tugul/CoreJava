@@ -40,22 +40,32 @@ public class NumericLaterals {
 
         int i = 100;
         float f = i;
-        i = (int)f;         // Int to float requires explicit cast
+        i = (int)f;         // Float to int requires explicit cast, but not int to float
 
         long l = 100;
         double d = l;
-        l = (long)d;        // Double to long requires explicit cast
+        l = (long)d;        // Double to long requires explicit cast, but not long to double
 
-        // Binary integer
+        // Binary integer, 0B......
         int a1 = 0B1011;
         int a2 = 0B2011;    // DOES NOT COMPILE, binary number digits must be 0 or 1
-        int a3 = 0B111111111111111111111111111111111111111111111100000; // DOES NOT COMPILE, Integer number too large
+        int a3 = 0B111111111111111111111111111111111111111111111100000; // DOES NOT COMPILE, literal is too large for int
         int a4 = (int)0B111111111111111111111111111111111111111111111100000L;   // Add L mark and cast explicitly
-        long b1 = 0B111111111111111111111111111111111111111111111100000L;
+        long b1 = 0B111111111111111111111111111111111111111111111100000; // DOES NOT COMPILE, literal is too large for int
+        long b2 = 0B111111111111111111111111111111111111111111111100000L;// Add L mark
 
-        // Octal integer
+        // Octal integer, 0....
         int c1 = 08;                // DOES NOT COMPILE, octal number digits must be between 0-7
-        int c2 = 0761276125422121;  // DOES NOT COMPILE, Integer number too large
-        long d1 = 0761276125422121L;
+        int c2 = 0761276125422121;  // DOES NOT COMPILE, literal is too large for int
+        long d1 = 0761276125422121; // DOES NOT COMPILE, literal is too large for int
+        long d2 = 0761276125422121L;// Add L mark
+
+        // Hexadecimal 0X....
+        byte bt1 = 0xa;
+        byte bt2 = 0xaB;            // DOES NOT COMPILE, literal is over byte limit
+        byte bt3 = (byte)0xaB;      // explicitly cast to byte
+        short s1 = 0xaB;            // can fit in short
+        long lg1 = 0xabcdef123;     // DOES NOT COMPILE, literal is too large for int
+        long lg2 = 0xabcdef123L;    // Add L mark
     }
 }
