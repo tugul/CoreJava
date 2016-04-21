@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * - Size is dynamic, can be changed like StringBuilder
  * - ArrayList implements interface List
- * - ArrayList has size() method while Array has length property
+ * - ArrayList has size() method while Array has length variable
  * - ArrayList overrides equals() method, so it will compare contents
  */
 public class AboutArrayList {
