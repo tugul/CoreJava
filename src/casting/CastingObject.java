@@ -5,6 +5,9 @@ package casting;
  * - Casting object to superclass doesn't require explicit cast
  * - Casting object to subclass requires explicit cast
  *
+ * - Type of object indicates what methods/fields exist within that object in memory 
+ * - Type of reference to object indicates what methods/fields are accessible to Java application
+ * 
  * Compiler can't allow casting between unrelated class,
  * It only allows related class, but not smart enough to identify actual instance
  */
