@@ -14,7 +14,12 @@ package enums;
  * - values(): returns array of all elements
  * - valueOf(String str) : parses String and converts to Enum element
  * - name() : returns name of element in String
+ * - ordinal() : index of element
  */
+
+enum Planet {
+    Earth, Mars, Saturn     // semicolon not mandatory when no other extra members
+}
 
 enum Season {
     Summer, Autumn, Winter { void printWeather() { System.out.println("cold");}}, Spring;
