@@ -2,7 +2,7 @@ package collections;
 
 /**
  * static <T> List<T> asList(T... a)
- * - Resulted List called a backed list (can update content, but can't change size)
+ * - Resulted List called a backed list (backed by original array, so content can change, but not size)
  * - Original array and resulted backed list point to same data store
  */
 public class ConvertArrayToArrayList {
