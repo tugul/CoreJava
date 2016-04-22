@@ -44,17 +44,17 @@ public class BoundedWildcard {
         // Upper bound
         // can't add/remove/change collection except for add(null), clear() and get the iterator
         List<? extends B> a = new ArrayList<B>();
-        a.add(new A());
-        a.add(new B());
-        a.add(new C());
-        a.add(new D());
+        a.add(new A());     // DOES NOT COMPILE
+        a.add(new B());     // DOES NOT COMPILE
+        a.add(new C());     // DOES NOT COMPILE
+        a.add(new D());     // DOES NOT COMPILE
         a.add(null);
 
         // Lower bound
         // Contrary to upper bound, can add instance of lower bound type and its subtypes
         List<? super C> b = new ArrayList<C>();
-        b.add(new A());
-        b.add(new B());
+        b.add(new A());     // DOES NOT COMPILE
+        b.add(new B());     // DOES NOT COMPILE
         b.add(new C());
         b.add(new D());
         b.add(null);
