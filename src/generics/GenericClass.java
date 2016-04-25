@@ -6,6 +6,13 @@ package generics;
  * T - placeholder, any letter or letters declared in angle bracket are generic types
  * The letters representing types must match literally when used! (regardless of inherited types)
  *
+ * Limitations on generic types:
+ * - can't call constructor of generic type: new T()
+ * - can't create array of static type: new T[]
+ * - can't call instanceof: obj instanceof T
+ * - can't use primitive as generic type, instead use their wrapper classes
+ * - can't create static variable with generic type
+ * - can't create static method with generic type defined in generic class definition
  */
 
 class GeneralWithTwo <T, e> {
@@ -14,7 +21,7 @@ class GeneralWithTwo <T, e> {
 }
 
 class AnotherGeneral <A, b,C, d extends C> {
-    A a;
+    A[] a;
     b b;
     C c;
 }
@@ -24,6 +31,10 @@ public class GenericClass<T> {
 
     public GenericClass(T tag){
         this.tag = tag;
+
+        boolean isIt = tag instanceof T;    // DOES NOT COMPILE
+        T[] aa = new T[10];                 // DOES NOT COMPILE
+        T t = new T();                      // DOES NOT COMPILE
     }
 
     public T getTag(){
@@ -37,6 +48,6 @@ public class GenericClass<T> {
         GenericClass<String> gcS = new GenericClass<>("General");
         System.out.println(gcS.getTag());   // General
 
-        Integer i = gcS.getTag();   // DOES NOT COMPILE, type safety works!
+        //Integer i = gcS.getTag();   // DOES NOT COMPILE, type safety works!
     }
 }
