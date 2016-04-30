@@ -8,11 +8,8 @@ import java.util.function.*;
  * - Java 8's new API in Map
  * putIfAbsent(K key, V value) returns V
  * merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction) returns V
- * computeIfPresent()
- * computeIfAbsent()
- *
- *
- *
+ * computeIfPresent(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) returns V
+ * computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction) returns V
  */
 public class NewMethodsInMap {
     public static void main(String[] args) {
@@ -46,25 +43,24 @@ public class NewMethodsInMap {
         System.out.println(favoriteMaps);                       // {A=12345, B=123}
 
         // computeIfPresent
-        // runs given function if requested key is found
-        // /computeIfAbsent
-        // runs given function if requested key is not found or value is null
+        // runs given function if requested key is found, and returns null if not found
         Map<String, Integer> counts1 = new HashMap<>();
-        counts1.put("Jenny", 1);
-        BiFunction<String, Integer, Integer> mapper1 = (k, v) -> v + 1;
-        Integer jenny = counts1.computeIfPresent("Jenny", mapper1);
-        Integer sam = counts1.computeIfPresent("Sam", mapper1);
-        System.out.println(counts1); // {Jenny=2}
-        System.out.println(jenny); // 2
-        System.out.println(sam); // null
+        counts1.put("A", 5);
+        BiFunction<String, Integer, Integer> mapper1 = (k, v) -> v * 10;
+        Integer intA = counts1.computeIfPresent("A", mapper1);  // 50
+        Integer intB = counts1.computeIfPresent("B", mapper1);  // null
+        System.out.println(counts1);                            // {A=50}
 
+        // /computeIfAbsent
+        // runs given function if requested key is not found or value is null, and returns null if found or non-null
         Map<String, Integer> counts2 = new HashMap<>();
-        counts2.put("Jenny", 15);
-        counts2.put("Tom", null);
-        Function<String, Integer> mapper2 = (key) -> 1;
-        Integer ba = counts2.computeIfAbsent("Jenny", mapper2); // 15
-        Integer bb = counts2.computeIfAbsent("Sam", mapper2); // 1
-        Integer bc = counts2.computeIfAbsent("Tom", mapper2); // 1
-        System.out.println(counts2); // {Tom=1, Jenny=15, Sam=1}
+        counts2.put("A", 20);
+        counts2.put(null, 20);
+        counts2.put("B", null);
+        Function<String, Integer> mapper2 = (k) -> 9;
+        Integer intA2 = counts2.computeIfAbsent("A", mapper2); // 20
+        Integer intB2 = counts2.computeIfAbsent("B", mapper2); // 9
+        Integer intC2 = counts2.computeIfAbsent("C", mapper2); // 9
+        System.out.println(counts2);                           // {A=20, B=9, C=9}
     }
 }
