@@ -18,6 +18,8 @@ class B extends A { }
 
 class C{ }
 
+interface D {}
+
 public class CastingObject {
     public static void main(String[] args) {
         A a1 = new A();
@@ -30,5 +32,7 @@ public class CastingObject {
         B b2 = (B)a2;     // a2 refers to object of B class, so can reclaim
 
         C c1 = (C)a2;     // DOES NOT COMPILE, compiler knows they are unrelated
+        D d1 = (D)b1;     // COMPILES bc compiler can't validate interface type casting,
+                          // but if class B is final, compiler can tell it is inconvertable type
     }
 }
