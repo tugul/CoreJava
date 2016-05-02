@@ -23,14 +23,12 @@ public class Juxtaposition {
         System.out.println(Arrays.toString(array));
         System.out.println(arrayList);
 
-        // Both are mutable, value can be changed. Size can change in Arraylist only
+        // Both are mutable, value can be changed. But size can change in ArrayList only
         // Both have order and indexes
         System.out.println(new int[10].length);         // 10
         System.out.println(new ArrayList(10).size());   // 0
 
         new ArrayList().remove(0); // COMPILES, but throws Runtime exception
-
-
 
     }
 }
