@@ -3,7 +3,7 @@ package lambdas;
 import java.util.function.Predicate;
 
 /**
- *
+ * Sample functional interface Climb is used in the example
  *
  */
 
