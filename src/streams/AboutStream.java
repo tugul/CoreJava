@@ -9,8 +9,6 @@ import java.util.TreeSet;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 /**
@@ -40,10 +38,6 @@ public class AboutStream {
         Stream<Double> randomNumbers = Stream.generate(Math::random);
         Stream<Integer> evenNumbers = Stream.iterate(2, x -> x + 2);    // (starting value, lambda expression)
 
-        // Create IntStream
-        IntStream oneToNine = IntStream.range(1,10);        // 1...9
-        LongStream oneToTen = LongStream.rangeClosed(1,10); // 1...10, end value inclusive
-
         // ----------------------------
         // 2. Terminal operations
         // ----------------------------
@@ -51,8 +45,7 @@ public class AboutStream {
         System.out.println(empty.count()); // 0
 
         // min/max accepts Comparator and returns Optional<T>
-        System.out.println(stream123.min((a1, a2) -> a1 - a2));
-        System.out.println(oneToNine.sum());     // 45
+        System.out.println(stream123.min((a1, a2) -> a1 - a2)); // min is found, and stream is destroyed, no longer usable
 
         // findAny(), findFirst() takes no argument and returns Optional<T>
         planetsFromList.findAny().ifPresent(System.out::println);   // Mars
@@ -67,9 +60,10 @@ public class AboutStream {
         Stream<String> infiniteOnes = Stream.generate(()->"One");
         System.out.println(infiniteOnes.anyMatch(isFirstUpperCase));      // true
 
-        // forEach() takes Consumer and return nothing
+        // forEach() takes Consumer and returns nothing
         list.stream().forEach(System.out::println);
 
+        // reduce - general purpose reduction method unlike sum, max, min ... which are more specific
         // T reduce(T t, BinaryOperator<T> operator)
         Stream<String> letters = Stream.of("a", "b", "c");
         String alphabet = letters.reduce("", (s1, s2) -> s1 + s2);  // "abc"
