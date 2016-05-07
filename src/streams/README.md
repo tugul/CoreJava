@@ -8,9 +8,8 @@ Difference between **Stream\<Integer>** and **IntStream** is that:
 
 Methods to convert between different Streams
 
- | Methods to convert streams to each other ||||
 Source Stream | To Create Stream | To Create DoubleStream | To Create IntStream | To Create LongStream
---- | --- |--- |--- |--
+--- | --- |--- |--- |---
 **Stream** | map | mapToDouble | mapToInt | mapToLong
 **DoubleStream** | mapToObj | map | mapToInt | mapToLong
 **IntStream** | mapToObj | mapToDouble | map | mapToLong
@@ -18,9 +17,8 @@ Source Stream | To Create Stream | To Create DoubleStream | To Create IntStream 
  
 Those **map*** methods take Function parameter, respectively. 
 
- | Parameters to each map method ||||
 Source Stream | To Create Stream | To Create DoubleStream | To Create IntStream | To Create LongStream
---- | --- |--- |--- |--
+--- | --- |--- |--- |---
 **Stream** | Function | ToDoubleFunction | ToIntFunction | ToLongFunction
 **DoubleStream** | DoubleFunction | DoubleUnaryOperator | DoubleToIntFunction | DoubleToLongFunction
 **IntStream** | IntFunction | IntToDoubleFunction | IntUnaryOperator | IntToLongFunction
