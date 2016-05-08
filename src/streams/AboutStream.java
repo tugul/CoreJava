@@ -48,6 +48,7 @@ public class AboutStream {
         System.out.println(stream123.min((a1, a2) -> a1 - a2)); // min is found, and stream is destroyed, no longer usable
 
         // findAny(), findFirst() takes no argument and returns Optional<T>
+        // findFirst is restricted to return first occurrence, but findAny return any occurence unexpectedly so it is faster
         planetsFromList.findAny().ifPresent(System.out::println);   // Mars
         Stream.generate(() -> "infinite").findFirst().ifPresent(System.out::println); // infinite, terminates infinite stream
 
