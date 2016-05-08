@@ -2,13 +2,11 @@ package streams;
 
 import static java.util.Arrays.asList;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -48,9 +46,15 @@ public class AboutStream {
         System.out.println(stream123.min((a1, a2) -> a1 - a2)); // min is found, and stream is destroyed, no longer usable
 
         // findAny(), findFirst() takes no argument and returns Optional<T>
-        // findFirst is restricted to return first occurrence, but findAny return any occurence unexpectedly so it is faster
+        // mostly used after filter method
+        // findFirst is restricted to return first occurrence, but findAny return any occurrence unexpectedly so it is faster
         planetsFromList.findAny().ifPresent(System.out::println);   // Mars
         Stream.generate(() -> "infinite").findFirst().ifPresent(System.out::println); // infinite, terminates infinite stream
+
+        // find*** methods on Stream<T> and primitive streams return Optional<T> or OptionalInt, OptionalLong and OptionalDouble, respectively
+        IntStream odds = IntStream.iterate(11, x -> x + 2);
+        OptionalInt optFive = odds.filter(x -> x%5 == 0).findFirst();
+        System.out.println(optFive.getAsInt());
 
         // allMatch(), anyMatch(), noneMatch() take Predicate as argument and returns boolean
         Predicate<String> isFirstUpperCase = x -> Character.isUpperCase(x.charAt(0));
