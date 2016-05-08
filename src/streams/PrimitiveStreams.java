@@ -9,13 +9,15 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 
 /**
+ * As common use of primitive types, Java 8 introduced generic Stream<T> as well as specific stream for each primitive type
  *
  * 3 primitive streams:
  * - IntStream, specific functional interface IntSupplier
  * - LongStream, specific functional interface LongSupplier
  * - DoubleStream, specific functional interface DoubleSupplier
- * they have additional and math operations: range, rangeClosed, max, min, average, sum and summaryStatistics
+ * They have additional methods about math operations: range, rangeClosed, max, min, average, sum and summaryStatistics
  *
+ * OBS: There is no BooleanStream although BooleanSupplier exists
  */
 public class PrimitiveStreams {
     public static void main(String[] args) {
@@ -39,7 +41,7 @@ public class PrimitiveStreams {
 
         // Generate DoubleStream and convert to IntStream
         IntStream randomNumbers = DoubleStream.generate(Math::random).mapToInt(x -> (int)(x * 100));
-//        randomNumbers.limit(3).forEach(System.out::println);
+        randomNumbers.limit(3).forEach(System.out::println);
 
         // Summarizing statics on stream (min, max, average, size and counts)
         IntSummaryStatistics stats = intStream2.summaryStatistics();
