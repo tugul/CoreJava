@@ -126,16 +126,19 @@ public class AboutStream {
 
         // peek - allows to perform operation without changing stream, useful for debugging
         // In below, call peek before filtering to see if flow is going correct
-        Stream<Integer> infinite1 = Stream.iterate(1, x -> x + 1);
-        infinite1.limit(6)
+        Stream.iterate(1, x -> x + 1).limit(6)
                 .peek(System.out::print)
                 .filter(x -> x % 2 == 0)
                 .forEach(System.out::print);    // 122344566
 
-        Stream<Integer> infinite2 = Stream.iterate(1, x -> x + 1);
-        infinite2.filter(x -> x % 2 == 1)
+        Stream.iterate(1, x -> x + 1).filter(x -> x % 2 == 1)
                 .peek(System.out::print)
                 .limit(4)
                 .forEach(System.out::print);    // 11335577
+
+        // as intermediate operation, peek will only run when there is terminal operation, so below will produce nothing
+        Stream.iterate(1, x -> x + 1).filter(x -> x % 2 == 1)
+                .peek(System.out::print)
+                .limit(4);                      // no output
     }
 }
