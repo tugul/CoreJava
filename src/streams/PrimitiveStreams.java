@@ -1,8 +1,6 @@
 package streams;
 
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.OptionalDouble;
+import java.util.*;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -41,12 +39,23 @@ public class PrimitiveStreams {
 
         // Generate DoubleStream and convert to IntStream
         IntStream randomNumbers = DoubleStream.generate(Math::random).mapToInt(x -> (int)(x * 100));
-        randomNumbers.limit(3).forEach(System.out::println);
+//        randomNumbers.limit(3).forEach(System.out::println);
 
         // Summarizing statics on stream (min, max, average, size and counts)
         IntSummaryStatistics stats = intStream2.summaryStatistics();
         if (stats.getCount() == 0)
             throw new RuntimeException();
         int deviation = stats.getMax() - stats.getMin();
+
+        // Handling optionals
+        // get method of each primitive Optional class are getAsInt, getAsLong and getAsDouble
+        // Below example illustrates diff between OptionalInt vs Optional<Integer>
+        IntStream odds = IntStream.iterate(11, x -> x + 2);
+        OptionalInt optFive = odds.filter(x -> x%5 == 0).findFirst();
+        System.out.println(optFive.getAsInt());     // 15
+
+        List<Integer> nums = asList(11, 21, 41, 35);
+        Optional<Integer> result = nums.stream().filter(i ->i % 7 == 0).findFirst();
+        System.out.println(result.get());           // 21
     }
 }
