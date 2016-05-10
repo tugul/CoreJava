@@ -1,8 +1,6 @@
 package streams;
 
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.OptionalDouble;
+import java.util.*;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -11,13 +9,15 @@ import java.util.stream.Stream;
 import static java.util.Arrays.asList;
 
 /**
+ * As common use of primitive types, Java 8 introduced generic Stream<T> as well as specific stream for each primitive type
  *
  * 3 primitive streams:
  * - IntStream, specific functional interface IntSupplier
  * - LongStream, specific functional interface LongSupplier
  * - DoubleStream, specific functional interface DoubleSupplier
- * they have additional and math operations: range, rangeClosed, max, min, average, sum and summaryStatistics
+ * They have additional methods about math operations: range, rangeClosed, max, min, average, sum and summaryStatistics
  *
+ * OBS: There is no BooleanStream although BooleanSupplier exists
  */
 public class PrimitiveStreams {
     public static void main(String[] args) {
@@ -48,5 +48,16 @@ public class PrimitiveStreams {
         if (stats.getCount() == 0)
             throw new RuntimeException();
         int deviation = stats.getMax() - stats.getMin();
+
+        // Handling optionals
+        // get method of each primitive Optional class are getAsInt, getAsLong and getAsDouble
+        // Below example illustrates diff between OptionalInt vs Optional<Integer>
+        IntStream odds = IntStream.iterate(11, x -> x + 2);
+        OptionalInt optFive = odds.filter(x -> x%5 == 0).findFirst();
+        System.out.println(optFive.getAsInt());     // 15
+
+        List<Integer> nums = asList(11, 21, 41, 35);
+        Optional<Integer> result = nums.stream().filter(i ->i % 7 == 0).findFirst();
+        System.out.println(result.get());           // 21
     }
 }
