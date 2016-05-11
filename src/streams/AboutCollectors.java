@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 /**
  * - Collector
- * Introduced in Java 8 as means to push stream into collected values (i.e. collection)
+ * Introduced in Java 8 as means to push stream into collected values (i.e. collection or single value)
  *
  * Collector  - interface Collector<T, A, R>
  * Collectors - final class Collectors (helper class)
@@ -15,20 +15,19 @@ import java.util.stream.Stream;
  */
 public class AboutCollectors {
     public static void main(String[] args) {
-        // collect method of Stream -- terminal operation
-        // <R,A> R collect(Collector<? super T, A,R> collector)
-
         List<String> letters = Arrays.asList("d", "a", "y", "y", "s");
 
+        // collect method of Stream -- terminal operation
+        // <R, A> R collect(Collector<? super T, A,R> collector)
         TreeSet<String> sortedSet = letters.stream().collect(Collectors.toCollection(TreeSet::new)); // unique, ordered
-        System.out.println(sortedSet); // [a, d, s, y]
+        System.out.println(sortedSet);  // [a, d, s, y]
 
         Set<String> set = letters.stream().collect(Collectors.toSet()); // unique, but order is not guaranteed
-        System.out.println(set); // [a, s, d, y]
+        System.out.println(set);        // [a, s, d, y]
 
         // Collectors.joining returns Collector
         String joined = letters.stream().collect(Collectors.joining("-"));
-        System.out.println(joined); // d-a-y-y-s
+        System.out.println(joined);     // d-a-y-y-s
 
         // Stream to collectedly average value
         List<String> message = Arrays.asList("Save", "the", "earth");
@@ -45,16 +44,19 @@ public class AboutCollectors {
 //        Map<Integer, String> mappedWords2 = words.stream().collect(Collectors.toMap(String::length, k -> k.toUpperCase()));
 
         // Using mergeFunction to resolve duplicate key issue
-        Map<Integer, String> mappedWords3 = words.stream().collect(Collectors.toMap(String::length, k -> k, (k1, k2) -> k1 + ":" + k2));
+        Map<Integer, String> mappedWords3 = words.stream()
+                .collect(Collectors.toMap(String::length, k -> k, (k1, k2) -> k1 + ":" + k2));
         System.out.println(mappedWords3);   // {4=Save:this, 5=earth}
 
         // Using mergeFunction and mapSupplier
-        TreeMap<Integer, String> mappedWords4 = words.stream().collect(Collectors.toMap(String::length, k -> k, (k1, k2) -> k1 + ":" + k2, TreeMap::new));
+        TreeMap<Integer, String> mappedWords4 = words.stream()
+                .collect(Collectors.toMap(String::length, k -> k, (k1, k2) -> k1 + ":" + k2, TreeMap::new));
         System.out.println(mappedWords4);   // {4=Save:this, 5=earth}
 
         // Group, Partition and Map
         // Collectors.groupingBy takes Classifier and ()
-        Map<Integer, List<String>> map1 = words.stream().collect(Collectors.groupingBy(String::length));
+        Map<Integer, List<String>> map1 = words.stream()
+                .collect(Collectors.groupingBy(String::length));
         System.out.println(map1);  // {4=[Save, this], 5=[earth]}
 
         Map<Integer, Set<String>> map2 = words.stream()
