@@ -11,6 +11,21 @@ Abstract base classes: Reader, Writer
 
 PrintWriter and PrintStream classes have no corresponding input or reader classes while other classes have always input and output corresponding classes.
 PrintStream is a child class of OutputStream. 
- 
-Buffered classes read/write data in bulk, rather than single byte by byte. So performance is much higher than low level stream classes. 
 
+**FileInputStream
+FileOutputStream**
+
+-1 is returned when reached the end of a file. 
+
+**BufferedInputStream
+BufferedOutputStream**
+Buffered classes read/write data in an array of bytes, rather than single byte by byte. So performance is much higher than low level stream classes.
+0 is returned from read() method when reached the end of a file.
+
+
+**FileReader FileWriter 
+BufferedReader BufferedWriter**
+Those classes with their buffered classes are most commonly used as they provide a way to directly read/write chars into a file.
+-1 is returned when reached the end of a file. _Null_ is returned from readLine() method. 
+ 
+ 

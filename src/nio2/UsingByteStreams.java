@@ -6,15 +6,26 @@ import java.io.*;
  * FileInputStream
  * FileOutputStream
  *
- * Those are used to read/write bytes from/to a file and their constructors take a File object or a string, denoting file path.
+ * Those are used to read/write a byte from/to a file and their constructors take a File object or a string, denoting file path.
+ * read() method returns -1 when indicating the end of the stream/file
+ * read() returns primitive int type, similarly write() use int type to write a single byte to file.
  *
  * BufferedInputStream
  * BufferedOutputStream
  *
- * Buffered classes read/write data in bulk, rather than single byte by byte. So performance is much higher than low level stream classes.
+ * Buffered classes read/write data in bulk, rather than single byte by byte.
+ * So performance is much higher than low level stream classes.
+ * read() method returns 0 to indicate end of the stream.
+ *
+ * flush() - data in memory/cache will be immediately written into disk, to reduce loss of data in memory in case of crush
+ * mark(int k)- if marking supported (check using boolean markSupported() before), marks current position in stream
+ *              and keeps reading further k byte and calling reset() method moves pointer back to the marked position.
+ *              In fact, a memory with limit of k bytes is allocated to store read bytes. Calling reset after the limit
+ *              exceeds, runtime exception will be thrown as the mark is invalidated
+ * skip(long k)- allows to skip given number of bytes when reading and returns long value indicating number of skipped bytes
  *
  */
-public class UsingStreams {
+public class UsingByteStreams {
     // Copy a file by reading/writing one byte at a time
     static void copyFile(String source, String target){
         try (FileInputStream in = new FileInputStream(new File(source));
@@ -35,10 +46,11 @@ public class UsingStreams {
         try(BufferedInputStream in = new BufferedInputStream(new FileInputStream(new File(source)));
             BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(target)))){
 
-            byte[] buffer = new byte[1024];
+            int bufferSize = 256;
+            byte[] buffer = new byte[bufferSize];
             int readLength;
             while((readLength = in.read(buffer)) > 0){
-                out.write(buffer, 0, 1024);
+                out.write(buffer, 0, bufferSize);
                 out.flush();
             }
         }
