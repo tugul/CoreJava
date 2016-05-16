@@ -16,6 +16,7 @@ import java.util.Scanner;
  * Introduced in Java 1.6 and singleton class which has many convenient methods
  * Its single instance created by JVM and accessed by System.console() method
  * Can't be used in non-interactive environment and System.console() returns Null
+ * format()/printf() are only 2 methods to write out.
  * reader() and writer() methods return Reader and PrintWriter instances, respectively
  * and they are analogous to System.in and System.out. However, System.in and System.out
  * are just raw streams whereas Console provides many convenient methods
