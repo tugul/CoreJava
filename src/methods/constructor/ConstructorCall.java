@@ -1,4 +1,4 @@
-package constructor;
+package methods.constructor;
 
 /**
  * First line in a constructor is implicit call (if not explicitly written) to own other constructors or parent class's constructor
