@@ -1,4 +1,4 @@
-package nio2;
+package io;
 
 import java.io.*;
 import java.util.*;
@@ -42,7 +42,7 @@ public class UsingReaderWriter {
     }
 
     public static void main(String[] args) {
-        List<String> fileContent = readTextFile("nio2/README.md");
-        writeTextFile(fileContent, "nio2/WRITE.OUT");
+        List<String> fileContent = readTextFile("io/README.md");
+        writeTextFile(fileContent, "io/WRITE.OUT");
     }
 }

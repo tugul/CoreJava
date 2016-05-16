@@ -1,4 +1,4 @@
-package nio2;
+package io;
 
 import java.io.*;
 
@@ -60,8 +60,8 @@ public class UsingByteStreams {
     }
 
     public static void main(String[] args) {
-        copyFile("nio2/README.md","nio2/WRITE.me");
-        copyFileViaBuffer("nio2/README.md","nio2/WRITE.me");
+        copyFile("io/README.md", "io/WRITE.me");
+        copyFileViaBuffer("io/README.md", "io/WRITE.me");
 
         InputStream a;
         OutputStream o;

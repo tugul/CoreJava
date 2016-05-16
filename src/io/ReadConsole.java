@@ -1,4 +1,4 @@
-package nio2;
+package io;
 
 import java.io.BufferedReader;
 import java.io.Console;
