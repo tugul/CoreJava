@@ -11,21 +11,28 @@ import java.util.List;
  *
  * Any instance variable in Serializable class must be also Serializable in order for composite object to be serialized
  * Attempt to serialize object which is not Serializable lead to throw NotSerializableException
- * Keyword transient is used to mark instance variable not to be serialized/to be ignored from serialization
- * Static members of class are ignored to be serialized/de-serialized
+ * transient instance variables ->  not serialized, set to default value of their types when de-serialized
+ * Static variables -> not serialized, last set value reflects to to all objects when de-serialized
+ * final long serialVersionUID -> optional/special static member used by JVM during de-serialization
  *
  * ObjectInputStream    de-serialize stream into object
  * ObjectOutputStream   serialize object into stream
  *
- * Note: During de-serialization, constructor or any initializer of the serialized class won't be run
+ * Note:
+ * During de-serialization, constructor or any initializer of the serialized class won't be run
+ * Just reference to non-serializable class won't trigger NotSerializableException unless not holding real object
  *
  */
 
+class Wheel{
+}
+
 class Car implements Serializable {
-    private static final int serializedId = 250;
+    private static final long serialVersionUID = 250L;
     private static String model;    // String is Serializable
     private transient int price;
     private transient boolean isNew;
+    private Wheel wheel;            // reference to non-serializable class
 
     { price += 50; }
 
@@ -33,19 +40,20 @@ class Car implements Serializable {
         model = "Sedan";
         price = 100;
         isNew = true;
+        //wheel = new Wheel();      // will throw NotSerializableException
     }
 
-    public Car(String model, int price, boolean isNew) {
+    public Car(String model, int price, boolean isNew, Wheel wheel) {
         this.model = model;
         this.price = price;
         this.isNew = isNew;
+        //this.wheel = wheel;       // will throw NotSerializableException
     }
 
     public String toString(){
-        return "Car=[model: " + model + ", price: "+ price+", new: " + isNew + " ]";
+        return "Car=[model: " + model + ", price: "+ price+", new: " + isNew + " ] ";
     }
 }
-
 
 public class Serialization {
 
@@ -78,7 +86,7 @@ public class Serialization {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         List<Car> cars = new ArrayList<>();
         cars.add(new Car());
-        cars.add(new Car("Hatchback", 130, false));
+        cars.add(new Car("Hatchback", 130, false, new Wheel()));
 
         writeCarsToFile(cars, "Cars.out");
         readCarsFromFile("Cars.out").forEach(System.out::println);
