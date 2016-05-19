@@ -1,4 +1,4 @@
-package constructor;
+package methods.constructor;
 
 /**
  * Default constructor has no parameter list and no body
