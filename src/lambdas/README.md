@@ -4,7 +4,7 @@ interfaces introduced in Java 8.
 
 Functional Interface | Return Type | Functional Method | Argument | Primitive Specialization
  --- | --- | --- | --- | ---
-Supplier\<T> | T | get ()   |   | BooleanSupplier, IntSupplier, LongSupplier, DoubleSupplier
+Supplier\<T> | T | get   | -  | BooleanSupplier, IntSupplier, LongSupplier, DoubleSupplier
 Consumer\<T> | void | accept | T t | IntConsumer, LongConsumer, DoubleConsumer
 BiConsumer\<T, P> | void | accept | T t, P p | 
 Predicate\<T> | boolean | test | T t | IntPredicate, LongPredicate, DoublePredicate
