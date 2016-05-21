@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * - Path
+ * - java.io.file.Path
  * primary entry point of java.nio package
  * representation of path(file/directory) in a file system
  * path is system dependent, can't compare path from windows with one from unix based systems
@@ -42,5 +42,7 @@ public class PathCreation {
         Path path6 = file.toPath();
         file = path6.toFile();
 
+        String pathStr = file.getPath();
+        System.out.println("Path string: " + pathStr);
     }
 }
