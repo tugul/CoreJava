@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * - java.io.nio.file.Files
@@ -22,9 +23,11 @@ public class FilesHelper {
 
         // Files.isSameFile(Path, Path) - check if 2paths refer to same file in filesystem
         // it returns FALSE if same file exist in different locations. (For symbolic link, its target file is considered)
-        Path path1 = Paths.get("src/nio2/README.md");
-        System.out.println(path1 == path);                  // false, different objects
-        System.out.println(Files.isSameFile(path1, path));  // true, but refers to same file
+        Path path1 = Paths.get("src/io/../nio2/README.md");
+        System.out.println(path1 == path);                      // false, different objects
+        System.out.println(Files.isSameFile(path1, path));      // true, but refers to same file
+        System.out.println(path1.equals(path));                 // false, composed of different paths
+        System.out.println(path1.normalize().equals(path));     // true, after normalized, composed of same paths
 
         // Files.createDirectory() - creates single directory. If any of given parent doesn't exist, throws exception
         // Files.createDirectories() - creates directory structure
@@ -48,14 +51,15 @@ public class FilesHelper {
         InputStream in = new FileInputStream(inputFile.toFile());
         OutputStream out = new FileOutputStream("output.txt");
 
+        Files.deleteIfExists(Paths.get("fromStream.out"));
         Files.copy(in, Paths.get("fromStream.out"));
         Files.copy(inputFile, out);
 
         // Files.move(Path, Path) - moves/renames file or directory (move with contents in case of dir)
         // moving non-empty directory across drive is not supported
+        // moving always preserves all attributes to target file even when COPY_ATTRIBUTES flag is not set
         if (!Files.exists(Paths.get("destination")))
             Files.move(inputFile, Paths.get("destination"));
-
 
         // Files.delete(Path) - deletes file or non-empty directory, throws exception if doesn't exist
         // Files.deleteIfExists() - same as above, but doesn't throw exception and returns boolean false
@@ -68,7 +72,7 @@ public class FilesHelper {
         BufferedWriter bw = Files.newBufferedWriter(inputFile, Charset.forName("UTF-8"));
 
         // Files.ReadAllLines(Path) - read a file once and return list whose element is one line
-        // it can throw OutOfMemoryErro if file is huge
+        // it can throw OutOfMemoryError if file is huge
         List<String> lines = Files.readAllLines(Paths.get("input.txt"));
     }
 }
