@@ -76,6 +76,10 @@ public class PathOperation {
         // normalize() - clean up path
         path = Paths.get("/aa/bb/../cc/../dd");
         System.out.println("Cleaned up: " + path.normalize());      //  /aa/dd
-
+        // normalize() doesn't convert relative path to absolute
+        Path currentDir = Paths.get(".");
+        System.out.println(currentDir);                             // .
+        System.out.println(currentDir.normalize());                 // .
+        System.out.println(currentDir.toAbsolutePath());            // /home/bbn/IdeaProjects/CoreJava/.
     }
 }
