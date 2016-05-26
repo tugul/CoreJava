@@ -4,7 +4,12 @@ NIO2 actually intended to replace java.io.File class and its related interaction
 
 Paths - factory/helper class for Path
 Path refers to resource on filesystem which doesn't have to exist. And most of its operations doesn't require too. 
-However, Path.toRealPath()
  
+NIO2 API has following advantages over IO API:
+* supports file-system dependent attributes (DOS, POSIX)
+* allows you traverse directory hierarchy directly
+* supports symbolic link in file system
+* when reading multiple attributes of a file, it's faster
  
+
 
