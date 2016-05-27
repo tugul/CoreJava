@@ -14,8 +14,12 @@ import java.sql.*;
  *
  */
 public class ConnectingToDatabase {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         String connectionUrl = "jdbc:postgresql:devalto";
+
+        // Required to load class for JDBC 3.0 or prior versions
+        Class.forName("org.postgresql.Driver");
+
         try (Connection conn = DriverManager.getConnection(connectionUrl);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select name from table")) {
