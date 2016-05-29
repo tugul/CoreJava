@@ -74,7 +74,8 @@ public class GettingResultSet {
 
             // Scrolling through result sets requires SCROLLABLE result set type
             // So, make sure that the type is scrollable whenever methods other than next() is used
-            // all those cursor scrolling methods return boolean
+            // all those scrolling methods return boolean except for beforeFirst(), afterLast()
+            // they return false when they make cursor points to one before first data row
 
             // previous() - moves cursor to previous record. Returns true if exists, otherwise false
             resultSet.previous();
@@ -82,9 +83,11 @@ public class GettingResultSet {
             // first(), last() - moves cursor to first and last record in set, respectively
             resultSet.first();
 
-            // beforeFirst() - brings cursor to its initial position
-            // afterLast() - moves cursor to after last record
+            // void beforeFirst() - brings cursor to its initial position
+            // void afterLast() - moves cursor to after last record
             resultSet.afterLast();
+            resultSet.beforeFirst();
+            System.out.println(resultSet.beforeFirst());    // DOES NOT COMPILE, beforeFirst() returns nothing
 
             // absolute(int) - moves cursor to certain position. Data row starts from 1.
             // Position 0 is before first data row. Returns true if data exists, false otherwise
