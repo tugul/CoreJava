@@ -22,8 +22,8 @@ public class CreateZonedDateTime {
         ZonedDateTime zonedDateTime2 = ZonedDateTime.of(dateNow, timeNow, zone);
 
         // 3. Create from local date time and zone
-        LocalDateTime now = LocalDateTime.now();
-        ZonedDateTime zonedDateTime3 = ZonedDateTime.of(now, zone);
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ZonedDateTime zonedDateTime3 = ZonedDateTime.of(localDateTime, zone);
 
         // 4. Create by specifying every detail in constructor
         ZonedDateTime zonedDateTime4 = ZonedDateTime.of(2016, 05, 29, 11, 30, 0, 100, zone);
@@ -35,6 +35,22 @@ public class CreateZonedDateTime {
         ZoneId.getAvailableZoneIds().stream()
                 .filter(z -> z.contains("Eu"))
                 .sorted().forEach(System.out::println);
+
+        // Date time to Epoch (long value)
+        // it converts date and date time to long value relative to Jan 01, 1970
+        // LocalDateTime/ZonedDateTime have one and only method toEpochSecond()
+        zonedDateTime1.toEpochSecond();
+        localDateTime.toEpochSecond(ZoneOffset.MAX);
+
+        // LocalDate has 2 methods toEpochDay() / fromEpochDay(long)
+        LocalDate localDate = LocalDate.now();
+        localDate.toEpochDay();
+
+        // isBefore()
+        LocalDate may30 = LocalDate.of(2016, 05, 30);
+        LocalDate jun01 = may30.plusDays(2);
+        System.out.println(may30.isAfter(jun01));     // false
+        System.out.println(may30.isBefore(jun01));    // true
 
     }
 }
