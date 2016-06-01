@@ -33,11 +33,8 @@ public class UsingInstant {
         Instant nextYear = nowInstant.plus(1, ChronoUnit.YEARS);        // Exception: Unsupported unit: Years
         Instant nextDecades = nowInstant.plus(1, ChronoUnit.DECADES);   // Exception: Unsupported unit: Decades
 
-        System.out.println(tomorrow);
-        System.out.println(nextHour);
-        System.out.println(nextWeek1);
-        System.out.println(nextWeek2);
-        System.out.println(nextYear);
-
+        System.out.println(tomorrow);           // 2016-06-01T21:12:41.188Z
+        System.out.println(nextHour);           // 2016-05-31T22:12:41.188Z
+        System.out.println(nextWeek1);          // 2016-06-07T21:12:41.188Z
     }
 }
