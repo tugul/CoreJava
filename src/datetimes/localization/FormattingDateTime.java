@@ -56,10 +56,14 @@ public class FormattingDateTime {
         //System.out.println(date.format(myTimeFormat));        // Runtime exception, only date can't be formatted as time
         System.out.println(dateTime.format(myDateFormat));      // June 04, 2016
 
-        // Parse String into date and time
+        // Parse string into date and time
+
+        // parse(String) - parses string value using ISO_LOCAL_DATE_TIME format
+        // parse(String, DateTimeFormatter) - parses string value using given format
         // if format and String value are inconsistent, Java throws runtime exception
         String dateStr = "October 12, 2030";
         LocalDate parsedDate = LocalDate.parse(dateStr, myDateFormat);
-        System.out.println(parsedDate);     // 2030-10-12
+        System.out.println(parsedDate);                                         // 2030-10-12
+        System.out.println(LocalDateTime.parse("2030-10-12T13:50:43.397"));     // 2030-10-12T13:50:43.397
     }
 }
