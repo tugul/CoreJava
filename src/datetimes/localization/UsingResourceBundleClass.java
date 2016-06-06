@@ -37,9 +37,8 @@ public class UsingResourceBundleClass {
     public static void main(String[] args) {
         Locale locale = new Locale("en", "US");
         ResourceBundle rb = ResourceBundle.getBundle("Vocabulary", locale);
-        System.out.println(rb.getString("behaviour"));
 
-
-
+        System.out.println(rb.getString("behaviour"));      // behaviour
+        System.out.println(rb.getString("colour"));         // colour
     }
 }
