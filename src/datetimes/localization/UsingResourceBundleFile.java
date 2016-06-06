@@ -5,11 +5,8 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
- * - Resource bundle
- * Contains Local specific objects (key value pair) to be used by program
- * It can be defined in property file or in a class.
- *
- * NOTE: Resource files must exist in class path
+ * - Resource files
+ * It must exist in class path. Example files:
  * App_en.properties
  * App_de.properties
  * App_sv.properties
