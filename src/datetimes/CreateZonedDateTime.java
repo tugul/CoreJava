@@ -1,6 +1,7 @@
 package datetimes;
 
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 /**
  * - ZonedDateTime
@@ -52,5 +53,9 @@ public class CreateZonedDateTime {
         System.out.println(may30.isAfter(jun01));     // false
         System.out.println(may30.isBefore(jun01));    // true
 
+        // between(Temporal, Temporal) - determines difference between Temporals and returns long
+        System.out.println(ChronoUnit.DAYS.between(may30, jun01));      // 2
+        System.out.println(Period.between(may30, jun01));               // P2D
+        System.out.println(ChronoUnit.MONTHS.between(may30, jun01));    // 0   , truncates rather than rounding
     }
 }

@@ -1,6 +1,7 @@
 package datetimes;
 
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 /**
  * LocalTime - contains only time, no date info
@@ -41,7 +42,7 @@ public class CreateDateTimes {
         dateTime = LocalDateTime.of(2016, 03, 30, 15, 45, 30, 300);
         dateTime = LocalDateTime.of(date, time);
 
-        // For days, weeks, month, years
+        // Period - for days, weeks, month, years, decades
         Period fortNight = Period.ofWeeks(2);
         Period oneDay = fortNight.ofYears(1).ofDays(1); // Static method doesn't allow chaining, so last one considered
         Period year2Month7Days = Period.of(1, 2, 7);    // period of specified year, month and day
@@ -52,13 +53,20 @@ public class CreateDateTimes {
         System.out.println(oneDay);                     // P1D
         System.out.println(year2Month7Days);            // P1Y2M7D
 
-        // For hours, minutes, seconds, nano-secs
+        // Duration - for hours, minutes, seconds, nano-secs
         Duration hourly = Duration.ofHours(1);
         Duration oneSec = Duration.ofHours(3).ofSeconds(1); // Only last one's value is considered
         System.out.println(time.plus(hourly));  // 16:45
         System.out.println(time.plus(oneSec));  // 15:45:01
         //System.out.println(date.plus(hourly));  // Runtime exception, can't add hours to date
-        System.out.println(hourly);             // PT1H     - period of time 1 hour
-        System.out.println(oneSec);             // PT1S
+        System.out.println(hourly);                 // PT1H     - period of time 1 hour
+        System.out.println(oneSec);                 // PT1S
+        System.out.println(Duration.ofDays(1));     // PT24H
+        System.out.println(Duration.ofMillis(1));   // PT0.001S
+        System.out.println(Duration.ofNanos(1));    // PT0.000000001S
+
+        Duration daily = Duration.of(1, ChronoUnit.DAYS);
+        Duration every5min = Duration.of(5, ChronoUnit.MINUTES);
+        Duration every5sec = Duration.of(5, ChronoUnit.SECONDS);
     }
 }
