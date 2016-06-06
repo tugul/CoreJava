@@ -3,8 +3,10 @@ package exception;
 import java.io.IOException;
 
 /**
- * Checked exception must be thrown in try block if catch block is explicitly catching it.
- * For unchecked/runtime exception, it does not matter if to throw or to declare
+ * Checked exception must be thrown inside try block if there is explicit catch block for that checked exception.
+ * Solution is either to remove unreachable catch block or throw that checked exception inside try block
+ *
+ * For unchecked/runtime exception, it does not matter whether to throw or declare
  */
 public class MustThrowCheckedExceptionIfCatching {
     public static void main(String[] args) {
@@ -20,4 +22,7 @@ public class MustThrowCheckedExceptionIfCatching {
     }
 
     static void method() { }
+
+    // One solution is to throw IOException
+    // static void method() throws IOException { }
 }
