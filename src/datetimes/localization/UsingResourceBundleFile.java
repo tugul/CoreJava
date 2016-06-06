@@ -51,7 +51,10 @@ public class UsingResourceBundleFile {
 
         // Uses Properties class to get property values via its key
         Properties properties = new Properties();
-        ResourceBundle rb = ResourceBundle.getBundle("App");        // default locale as missed in argument
+
+        // getBundle(String) - get bundle using default locale
+        // getBundle(String, Locale) - get bundle using given locale
+        ResourceBundle rb = ResourceBundle.getBundle("App");
         rb.keySet().stream().forEach(x -> properties.put(x, rb.getString(x)));
 
         // get(String) - returns value of given key
