@@ -8,9 +8,9 @@ package exception;
  * - Try with resource
  * introduced in Java 7
  * doesn't require any catch or finally block
- * resource is automatically closed at the of try block
+ * resource is automatically closed at the end of try block (implicit finally block is executed)
  * Resource class must implement interface AutoClosable
- * several resource are closed in reverse order
+ * If several resource are opened, they are closed in reverse order
  *
  */
 class Box implements AutoCloseable {
