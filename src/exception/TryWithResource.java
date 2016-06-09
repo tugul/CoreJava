@@ -1,5 +1,7 @@
 package exception;
 
+import java.io.Closeable;
+
 /**
  * - Try statement
  * must be followed by either or both of catch and finally blocks
@@ -9,8 +11,12 @@ package exception;
  * introduced in Java 7
  * doesn't require any catch or finally block
  * resource is automatically closed at the end of try block (implicit finally block is executed)
- * Resource class must implement interface AutoClosable
+ * Resource class must implement interface java.lang.AutoClosable
  * If several resource are opened, they are closed in reverse order
+ *
+ * - java.io.Closeable
+ * resource can implement this interface as it extends interface AutoClosable
+ * its close only throws IOException while AutoClosable's close can throw any exception
  *
  */
 class Box implements AutoCloseable {
@@ -25,7 +31,7 @@ class Box implements AutoCloseable {
     }
 }
 
-class FragileBox implements AutoCloseable{
+class FragileBox implements Closeable {
     @Override
     public void close() throws RuntimeException {
         throw new RuntimeException("can't close");
