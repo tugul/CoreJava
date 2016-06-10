@@ -1,3 +1,5 @@
+Concurrency API(java.util.concurrent package) was initially introduced in Java 5 
+to ease threads management and since then enriched so much with many classes and framework.  
 
 
 - Runnable interface 
@@ -8,7 +10,7 @@ used to defined a work/task that thread will execute
 implements Runnable interface 
 used to execute a thread
 Executing task with thread is 2 step process 
-- define Thread with corresponding task to be executed
+- define Thread and corresponding task to be executed
 - start the task by calling Thread.start()
 
 There are 2 ways to define task and thread instance
