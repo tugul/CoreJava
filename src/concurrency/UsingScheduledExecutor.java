@@ -12,12 +12,12 @@ import java.util.stream.IntStream;
  * - Methods to schedule a task
  * schedule(Callable, long delay, TimeUnit) - execute Runnable task after given delay
  * schedule(Runnable, long delay, TimeUnit) - execute Callable task after given delay
- * scheduleAtFixedRate (Runnable, long delay, long interval, TimeUnit) - execute a task after given delay and
- *  repeatedly in interval without depending on previous task's execution
- * scheduleAtFixedDelay(Runnable, long delay, long interval, TimeUnit) - execute a task after given delay and
- *  repeatedly with interval after previous task is completed
+ * scheduleAtFixedRate(Runnable, long delay, long interval, TimeUnit) - execute a task after given delay and
+ *                          repeatedly in interval without depending on previous task's execution
+ * scheduleWithFixedDelay(Runnable, long delay, long interval, TimeUnit) - execute a task after given delay and
+ *                          repeatedly with interval after previous task is completed
  *
- * scheduleAtFixedRate is equivalent to cronjon in Unix
+ * scheduleAtFixedRate is equivalent to cronjob in Unix
  *
  */
 public class UsingScheduledExecutor {
