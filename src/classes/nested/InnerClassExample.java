@@ -1,5 +1,7 @@
 package classes.nested;
 
+import java.io.Serializable;
+
 /**
  * Inner class:
  * - non-static nested class defined in the same level as instance member of a top-level class
@@ -17,7 +19,9 @@ package classes.nested;
 class OuterClass {
     private String outerStr = "OuterStr";
 
-    protected class InnerClass {
+    private abstract class InnerAbstractClass {}
+
+    protected class InnerClass extends InnerAbstractClass implements Serializable {
         String innerStr = "Inner";
 
         InnerClass(){}
