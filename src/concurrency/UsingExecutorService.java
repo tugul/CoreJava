@@ -11,10 +11,11 @@ import java.util.concurrent.*;
  * - Methods to submit a task to a thread
  * Asynchronous (doesn't wait for given task to finish)
  * 1. execute(Runnable) - returns nothing
- * 2. submit(Callable<T>) - returns Future<T>
+ * 2. submit(Runnable) - returns Future<?>
+ * 3. submit(Callable<T>) - returns Future<T>
  * Synchronous (meaning that waits for given tasks to finish)
- * 3. invokeAll() takes a collection of Callable tasks and returns collection of Future objects once all are finished
- * 4. invokeAny() takes a collection of Callable tasks and returns single Future object once any of them is finished
+ * 4. invokeAll() takes a collection of Callable tasks and returns collection of Future objects once all are finished
+ * 5. invokeAny() takes a collection of Callable tasks and returns single Future object once any of them is finished
  *
  * - Waiting for result
  * Once task is submitted, result is returned in single or collection of Future object which has following methods
