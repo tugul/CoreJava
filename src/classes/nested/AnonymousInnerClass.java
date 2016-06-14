@@ -2,8 +2,8 @@ package classes.nested;
 
 /**
  * Anonymous inner class / Anonymous class
- * - Doesn't have name and defined in a method
- * - Implements interface or extend class (abstract/concrete)
+ * - Doesn't have name and it is defined in a method
+ * - Either implements interface or extends class (abstract or concrete)
  * - Can't have constructor or static initializer
  * - Can have instance initializer, local classes, new method or field, but not accessible from outside
  *
@@ -41,8 +41,8 @@ public class AnonymousInnerClass {
                 System.out.println("Hi A");
             }
         };
-        a.printMyName();
-        a.sayHi();      // DOES NOT COMPILE, interface doesn't define this method
+        a.printMyName();    // My name: A
+        a.sayHi();          // DOES NOT COMPILE, interface doesn't define this method
 
         // Anonymous class extending abstract class
         B b = new B() {
@@ -55,10 +55,11 @@ public class AnonymousInnerClass {
                 System.out.println("Hi B");
             }
         };
-        b.printMyName();
-        b.sayHi();
+        b.printMyName();    // My name: concrete B
+        b.sayHi();          // Hi B
         System.out.println(b.value);    // DOES NOT COMPILE, class B doesn't define this field
 
+        // Extending concrete class
         C c = new C(){
             void printMyName() {
                 System.out.println("Hello C");
@@ -68,7 +69,7 @@ public class AnonymousInnerClass {
                 System.out.println("Hi C");
             }
         };
-        c.printMyName();
+        c.printMyName();    // Hello C
         c.sayHi();      // DOES NOT COMPILE, class C doesn't define this method
 
     }
