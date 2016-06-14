@@ -29,6 +29,6 @@ OuterClass.StaticNestedClass nestedObj = new OuterClass.StaticNestedClass();
 - Anonymous class is a local inner class defined without a name. 
 - It implements interface or extends a class. It can have method declarations, but statements are not allowed
 
-
+All those types of classes can optionally implement interface or extend class except for Anonymous class which is mandatory to do it  
 
 

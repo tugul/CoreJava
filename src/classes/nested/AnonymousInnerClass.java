@@ -59,7 +59,7 @@ public class AnonymousInnerClass {
         b.sayHi();          // Hi B
         System.out.println(b.value);    // DOES NOT COMPILE, class B doesn't define this field
 
-        // Extending concrete class
+        // Extending a concrete class
         C c = new C(){
             void printMyName() {
                 System.out.println("Hello C");
@@ -70,7 +70,6 @@ public class AnonymousInnerClass {
             }
         };
         c.printMyName();    // Hello C
-        c.sayHi();      // DOES NOT COMPILE, class C doesn't define this method
-
+        c.sayHi();          // DOES NOT COMPILE, class C doesn't define this method
     }
 }

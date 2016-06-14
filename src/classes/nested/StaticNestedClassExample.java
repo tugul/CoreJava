@@ -1,5 +1,7 @@
 package classes.nested;
 
+import java.io.Serializable;
+
 /**
  * Inner class defined as static in a class
  * - can access to instance members of outer class only through instance of outer class
@@ -13,7 +15,7 @@ class OuterClass {
     private static String args = " args";
     private String mainGot = " main got ";
 
-    static class StaticNestedClass {
+    static class StaticNestedClass implements Serializable {
         protected OuterClass outerObj;
         static StaticNestedClass nestedObj;
 

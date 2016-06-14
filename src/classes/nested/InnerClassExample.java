@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Inner class:
  * - non-static nested class defined in the same level as instance member of a top-level class
  * - can't have static members
- * - can access to all members of outer class (even privates) using <outer class name>.this.<member name>
+ * - can access to all members of outer class (even privates) directly or using <outer class name>.this.<member name>
  * - can extend any class or implement interfaces
  * - can be final or abstract
  * - can have any possible access modifier
@@ -34,7 +34,7 @@ class OuterClass {
             System.out.println(innerStr);
         }
 
-        // Access to outer class's field
+        // Access to outer class's field (OuterClass.this.outerStr same as just outerStr)
         void printOuterStr(){
             System.out.println(innerStr + " - " + OuterClass.this.outerStr);
         }

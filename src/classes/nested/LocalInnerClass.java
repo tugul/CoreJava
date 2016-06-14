@@ -1,5 +1,6 @@
 package classes.nested;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
 /**
@@ -17,7 +18,7 @@ public class LocalInnerClass {
         String wordIs = " are ";
         wordIs = " is ";
 
-        class PostCode {
+        class PostCode implements Serializable {
             Pattern pattern = Pattern.compile(postCodeRegex);
             String postCode;
             public PostCode(String postCode) {
