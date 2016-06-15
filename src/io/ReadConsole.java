@@ -13,13 +13,16 @@ import java.util.Scanner;
  * Use java.io.Console
  *
  * - java.io.Console
- * Introduced in Java 1.6 and singleton class which has many convenient methods
+ * Introduced in Java 6 and singleton class which has many convenient methods
  * Its single instance created by JVM and accessed by System.console() method
  * Can't be used in non-interactive environment and System.console() returns Null
  * format()/printf() are only 2 methods to write out.
  * reader() and writer() methods return Reader and PrintWriter instances, respectively
  * and they are analogous to System.in and System.out. However, System.in and System.out
  * are just raw streams whereas Console provides many convenient methods
+ *
+ * readPassword() - reads password without showing what user types and returns char array instead of String
+ * readPassword(String fmt, Object... arg) - overloaded one with specific prompt message etc.
  *
  */
 public class ReadConsole {
@@ -47,8 +50,9 @@ public class ReadConsole {
     static String readConsoleByIOConsole(){
         Console console = System.console(); // Singleton instance
         String input = null;
+        // System.console() returns null if text interaction is not supported
         if (console == null)
-            System.out.println("");
+            System.out.println("User console is not available");
         else {
             console.writer().println("You are using io.Console");
 
@@ -62,7 +66,7 @@ public class ReadConsole {
 
     public static void main(String[] args) throws IOException {
         String value;
-        // Uncomment to use any of them
+        // To use any of them uncomment others
         //value = readConsoleByBufferedReader();
         //value = readConsoleByScanner();
         value = readConsoleByIOConsole();

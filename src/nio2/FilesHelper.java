@@ -6,10 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
- * - java.io.nio.file.Files
+ * - java.nio.file.Files
  * provides useful methods many of which are similar to methods in java.io.File
  * most of its method throws IOException
  * most of its method takes optional varargs: values of StandardCopyOption enum
@@ -51,7 +50,7 @@ public class FilesHelper {
         InputStream in = new FileInputStream(inputFile.toFile());
         OutputStream out = new FileOutputStream("output.txt");
 
-        Files.deleteIfExists(Paths.get("fromStream.out"));
+        boolean isDeleted = Files.deleteIfExists(Paths.get("fromStream.out"));
         Files.copy(in, Paths.get("fromStream.out"));
         Files.copy(inputFile, out);
 
@@ -70,6 +69,8 @@ public class FilesHelper {
         // Files.newBufferedWriter(Path, Charset) - write a file using java.io stream, returns BufferedReader object
         BufferedReader br = Files.newBufferedReader(inputFile, Charset.forName("UTF-8"));
         BufferedWriter bw = Files.newBufferedWriter(inputFile, Charset.forName("UTF-8"));
+        br.close();
+        bw.close();
 
         // Files.readAllLines(Path) - read a file once and return list containing each line as a single element
         // it can throw OutOfMemoryError if file is huge. Files.lines(Path) is more efficient as it uses lazy loading

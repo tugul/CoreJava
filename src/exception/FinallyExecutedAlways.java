@@ -2,7 +2,12 @@ package exception;
 
 /**
  * Finally block is always executed no matter how flow goes on and out.
- * OBS: Only System.exit() prevents finally block execution
+ *
+ * - Only followings can prevent execution of 'finally' block
+ * System.exit() in try block
+ * Infinite loop in try block
+ * JVM crash
+ *
  */
 public class FinallyExecutedAlways {
     public static void main(String[] args) {

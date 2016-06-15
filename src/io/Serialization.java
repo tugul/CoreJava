@@ -25,6 +25,8 @@ import java.util.List;
  */
 
 class Wheel{
+    // It is not Serializable and its reference is used in Car Serializable
+    // As long as the reference is not refering to object in memory, it won't lead Car class fail to compile
 }
 
 class Car implements Serializable {
@@ -44,7 +46,7 @@ class Car implements Serializable {
     }
 
     public Car(String model, int price, boolean isNew, Wheel wheel) {
-        this.model = model;
+        model = model;
         this.price = price;
         this.isNew = isNew;
         //this.wheel = wheel;       // will throw NotSerializableException

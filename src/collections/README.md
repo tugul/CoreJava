@@ -1,4 +1,4 @@
-Colletions framework has four main data structure types (list, set, queue and map). 
+Collections framework has four main data structure types (list, set, queue and map). 
 List, set and queue interfaces extends Collection interface. 
 
 ##### 1. List — Ordered collection of elements that can duplicate
@@ -18,4 +18,4 @@ List, set and queue interfaces extends Collection interface.
 ##### 4. Map —Maps unique keys to values
 - HashMap: Uses hashcode() to find keys, allows null key
 - TreeMap: Sorted map. Does not allow null keys.
-- Hashtable: Older version of hashmap. Does not allow null keys or values.
+- HashTable: Older version of HashMap. Does not allow null keys or values.
