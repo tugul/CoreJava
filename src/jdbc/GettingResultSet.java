@@ -50,13 +50,13 @@ public class GettingResultSet {
                     name = (String)nameObj;
             }
 
-            // It will throw Exception as cursor is not pointed to any data yet. So call next() and check its result
+            // It will throw SQLException as cursor is not pointed to any data yet. So call next() and then get result
             ResultSet resultSet1 = statement.executeQuery(sqlSelect);
-            resultSet1.getInt(2);
+            resultSet1.getInt(2);   // without a doubt, it will throw SQLException
 
-            // It is bad and not safe. next()'s return result must be used before calling get methods()
+            // It is not safe. next()'s return result must be used to check if there is any result to get
             resultSet1.next();
-            resultSet1.getInt(2);
+            resultSet1.getInt(2);   // trying to get second row which is uncertain to exist
 
             // Getting Date, Time
             String selectDates = "select birth_date, birth_time from people where name='Bold'";
