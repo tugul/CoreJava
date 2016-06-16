@@ -39,6 +39,9 @@ public class AboutArrayList {
         System.out.println(list1);          // [APRIL, bird, 4.5, 10, s]
         System.out.println(list1.contains("bird"));   // true
 
+        // forEach() is declared in ArrayList
+        list1.forEach(System.out::println);
+
         list1.remove("bird");
         System.out.println(list1);          // [APRIL, 4.5, 10, s]
         list1.remove(1);
