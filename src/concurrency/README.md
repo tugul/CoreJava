@@ -63,4 +63,14 @@ Threading problems
  Race condition - It occurs when two threads execute at the same time, resulting in an unexpected outcome. 
 
  
- 
+Synchronization
+---
+synchronized key word is used for only in method declaration or around code block. 
+When method is declared as synchronized, lock is created on the whole object, might be less efficient 
+On the other hand, synchronized block uses an object to create a lock
+Alternative to synchronized block/method, Atomic primitive classes can be used: 
+AtomicBoolean, 
+AtomicInteger, AtomicIntegerArray 
+AtomicLong, AtomicLongArray
+AtomicReference, AtomicReferenceArray 
+  
