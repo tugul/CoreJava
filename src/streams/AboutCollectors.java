@@ -72,7 +72,7 @@ public class AboutCollectors {
                 .collect(Collectors.partitioningBy(x -> x.length() > 4));
         System.out.println(map4);  // {false=[Save, this], true=[earth]}
 
-        // partitioningBy returns map with always/only 2 boolean keys(true & false)
+        // partitioningBy returns a map with always/only 2 boolean keys(true & false)
         // groupingBy returns a map with key which actually exists or are needed 
         // Below example shows difference between partitioningBy vs groupingBy in case of empty stream
         Map<Boolean, List<String>> map5 = Stream.empty().map(x -> (String)x)
@@ -88,7 +88,5 @@ public class AboutCollectors {
                 Collectors.groupingBy(String::length,
                         Collectors.mapping(s -> s.charAt(0), Collectors.minBy(Comparator.naturalOrder()))));
         System.out.println(map7); // {4=Optional[S], 5=Optional[e]}
-        //System.out.println(words.stream());
-
     }
 }

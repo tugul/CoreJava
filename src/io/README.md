@@ -4,6 +4,7 @@ _java.io_ package interacts with files and streams. I/O stream is a sequence of 
 **Byte Stream:** 
 Classes named with Stream are used for reading/writing all types of binary or byte data, including strings.
 Abstract base classes: **InputStream, OutputStream**
+Note: OutputStream is capable of writing char or binary data
 
 **Character Stream:** 
 Classes named with Reader/Writer are used for input/output of only character and String data. They make writing textual data to file easier and more convenient.
