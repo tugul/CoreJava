@@ -55,7 +55,7 @@ public class AboutOptional {
         System.out.println(findAverage());          // Optional.empty
 
         Double avg1 = findAverage(10, 20).get();    // 20.0
-        //Double avg2 = findAverage().get();          // NoSuchElementException
+        Double avg2 = findAverage().get();          // throws NoSuchElementException
 
         // isPresent() - check if has value or not
         Optional<Double> emptyOptional = findAverage();
@@ -70,8 +70,7 @@ public class AboutOptional {
         System.out.println(emptyOptional.orElseThrow(() -> new IllegalStateException()));      // using lambda
         System.out.println(emptyOptional.orElseThrow(IllegalStateException::new));             // method reference
 
-        // ofNullable(T)
-        // Ternary operator to avoid null can be replaced with Optional.ofNullable(...)
+        // ofNullable(T) - equivalent to ternary operator and replace it 
         Object value = null;
         Optional obj1 = (value== null) ? Optional.empty(): Optional.of(value);
         Optional obj2 = Optional.ofNullable(value);
