@@ -46,8 +46,3 @@ public class PathCreation {
         System.out.println("Path string: " + pathStr);
     }
 }
-
-// baul09@eduroam.bth.se
-// 3GsT93hvnphL
-
-//qeYFMkFCQDuM
