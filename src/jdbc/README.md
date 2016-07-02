@@ -11,6 +11,16 @@ In JDBC 4.0 and next versions, driver implementations are required to provide th
 Driver interface in a file named java.sql.Driver in directory META-INF/service. 
 
 
+ResultSet has following get methods which take int or String as argument indicating column:
+getBoolean
+getDate
+getDouble
+getInt
+getLong
+getObject
+getString
+getTime (returns java.sql.Time)
+getTimeStamp (returns java.sql.TimeStamp)
 
-
-
+Int argument indicates column number starting from 1....
+String argument indicates name of column from select statement
