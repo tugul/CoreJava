@@ -76,5 +76,9 @@ public class FilesHelper {
         // Files.ReadAllLines(Path) - read a file once and return list whose element is one line
         // it can throw OutOfMemoryError if file is huge
         List<String> lines = Files.readAllLines(Paths.get("input.txt"));
+        
+        // Searching in a directory
+        // Files.find(Path, int depth, BiPredicate) - same as walk method except for depth parameter
+        Files.find(Paths.get("dir"), 10, (a,b) -> b.isRegularFile()).forEach(System.out::println);;
     }
 }
