@@ -12,6 +12,11 @@ import java.util.List;
  * provides useful methods many of which are similar to methods in java.io.File
  * most of its method throws IOException
  * most of its method takes optional varargs: values of StandardCopyOption enum
+ * 
+ * StandardCopyOption.ATOMIC_MOVE : operation performed as seemingly instant even it is huge 
+ * StandardCopyOption.COPY_ATTRIBUTES : all metadata will be copied with file
+ * StandardCopyOption.NOFOLLOW_LINKS : if symbolic link, it won't be traversed
+ * StandardCopyOption.REPLACE_EXISTING : if target file exists, it will override 
  *
  */
 public class FilesHelper {
