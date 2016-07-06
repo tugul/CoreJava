@@ -12,6 +12,11 @@ import java.util.List;
  * provides useful methods many of which are similar to methods in java.io.File
  * most of its method throws IOException
  * most of its method takes optional varargs: values of StandardCopyOption enum
+ * 
+ * StandardCopyOption.ATOMIC_MOVE : operation performed as seemingly instant even it is huge 
+ * StandardCopyOption.COPY_ATTRIBUTES : all metadata will be copied with file
+ * StandardCopyOption.NOFOLLOW_LINKS : if symbolic link, it won't be traversed
+ * StandardCopyOption.REPLACE_EXISTING : if target file exists, it will override 
  *
  */
 public class FilesHelper {
@@ -54,11 +59,12 @@ public class FilesHelper {
         Files.copy(in, Paths.get("fromStream.out"));
         Files.copy(inputFile, out);
 
-        // Files.move(Path, Path) - moves/renames file or directory (move with contents in case of dir)
+        // Files.move(Path, Path, CopyOption...) - moves/renames file/dir/link (move with its contents for dir)
         // moving non-empty directory across drive is not supported
         // moving always preserves all attributes to target file even when COPY_ATTRIBUTES flag is not set
-        if (!Files.exists(Paths.get("destination")))
-            Files.move(inputFile, Paths.get("destination"));
+        // if destination path is dir, it must be empty
+        if (!Files.exists(Paths.get("destinationDir")))
+            Files.move(Paths.get("hem"), Paths.get("destinationDir"));
 
         // Files.delete(Path) - deletes file or non-empty directory, throws exception if doesn't exist
         // Files.deleteIfExists(Path) - same as above, but doesn't throw exception and returns boolean false
@@ -75,5 +81,9 @@ public class FilesHelper {
         // Files.readAllLines(Path) - read a file once and return list containing each line as a single element
         // it can throw OutOfMemoryError if file is huge. Files.lines(Path) is more efficient as it uses lazy loading
         List<String> lines = Files.readAllLines(Paths.get("input.txt"));
+        
+        // Searching in a directory
+        // Files.find(Path, int depth, BiPredicate) - same as walk method except for depth parameter
+        Files.find(Paths.get("dir"), 10, (a,b) -> b.isRegularFile()).forEach(System.out::println);;
     }
 }
