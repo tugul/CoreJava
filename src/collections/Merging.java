@@ -6,10 +6,9 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 /**
- * - merge()
+ * - merge(key, value, BiFunction)
  * it allows logic to decide what to choose in case of conflict during merging
- * if key is missing or value is null for existing already existing key, 
- * logic is not executed and simply takes new value 
+ * if key is not found or value is null for existing key, it simply takes new value by skipping logic 
  * if logic returns null, that key is removed from collection
  * 
  * TreeSet - unique and sorted items, adding null will compile, but will throw NullPointerException
@@ -24,13 +23,15 @@ public class Merging {
         treeMap.put(3, "b");
         treeMap.put(1, "c");
         treeMap.put(1, null);
+        // null key is not allowed in map
         //treeMap.put(null, null);  // throws NullPointerException
         for(Object number : treeMap.keySet())
             System.out.println(treeMap.get(number));
 
 
         TreeSet<Integer> treeSet = new TreeSet<>();
-        // treeSet.add(null);  // throw NullPointerException
+        // TreeSet is sorted set so null can't be sorted
+        //treeSet.add(null);  // throw NullPointerException
         treeSet.add(2);
         System.out.println(treeSet);
 
