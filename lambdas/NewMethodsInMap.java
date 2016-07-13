@@ -1,4 +1,4 @@
-package collections;
+package lambdas;
 
 import java.util.HashMap;
 import java.util.Map;

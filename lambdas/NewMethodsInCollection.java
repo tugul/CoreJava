@@ -1,4 +1,4 @@
-package collections;
+package lambdas;
 
 import java.util.ArrayList;
 import java.util.List;
