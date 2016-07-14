@@ -33,8 +33,8 @@ public class FilesHelper {
         System.out.println(path1.equals(path));                 // false, composed of different paths
         System.out.println(path1.normalize().equals(path));     // true, after normalized, composed of same paths
 
-        // Files.createDirectory() - creates single directory. If any of given parent doesn't exist, throws exception
-        // Files.createDirectories() - creates directory structure
+        // Files.createDirectory(Path) - creates single directory. If any of its parent doesn't exist, throws exception
+        // Files.createDirectories(Path) - creates directory structure
         // if directory already exists, throws FileAlreadyExistsException
         if (!Files.exists(Paths.get("files")))
             Files.createDirectory(Paths.get("files"));
@@ -67,7 +67,7 @@ public class FilesHelper {
             Files.move(Paths.get("hem"), Paths.get("destinationDir"));
 
         // Files.delete(Path) - deletes file or non-empty directory, throws exception if doesn't exist
-        // Files.deleteIfExists() - same as above, but doesn't throw exception and returns boolean false
+        // Files.deleteIfExists(Path) - same as above, but doesn't throw exception and returns boolean false
         Files.delete(Paths.get("fromStream.out"));
         Files.deleteIfExists(Paths.get("fromStream.out"));
 
@@ -78,8 +78,8 @@ public class FilesHelper {
         br.close();
         bw.close();
 
-        // Files.ReadAllLines(Path) - read a file once and return list whose element is one line
-        // it can throw OutOfMemoryError if file is huge
+        // Files.readAllLines(Path) - read a file once and return list containing each line as a single element
+        // it can throw OutOfMemoryError if file is huge. Files.lines(Path) is more efficient as it uses lazy loading
         List<String> lines = Files.readAllLines(Paths.get("input.txt"));
         
         // Searching in a directory
