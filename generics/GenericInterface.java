@@ -27,10 +27,6 @@ class Packer<T> implements IPackable<T> {
 
 // 3. not using generics triggers raw type warning
 class OldPacker implements IPackable {
-    public void pack(Object o) {}
-}
-
-public class GenericInterface {
-    public static void main(String[] args) {
-    }
+    public void pack(Object o) {}	// Overriding method, T must be type Object in this case 
+    public void pack(Box b) {}		// Overloading method
 }
