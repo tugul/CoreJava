@@ -28,6 +28,13 @@ class AnotherGeneral <A, b,C, d extends C> {
 
 public class GenericClass<T> {
     private T tag;
+    public static T t;		// DOES NOT COMPILE, generic type can't be used in static context
+    
+    public static void method1(T t) {}	// DOES NOT COMPILE
+    public static void method3() {
+    	T t;							// DOES NOT COMPILE
+    }
+    public void methodNonStatic(T t) {}	// COMPILES
 
     public GenericClass(T tag){
         this.tag = tag;
@@ -48,6 +55,6 @@ public class GenericClass<T> {
         GenericClass<String> gcS = new GenericClass<>("General");
         System.out.println(gcS.getTag());   // General
 
-        //Integer i = gcS.getTag();   // DOES NOT COMPILE, type safety works!
+        Integer i = gcS.getTag();   // DOES NOT COMPILE, type safety works!
     }
 }
