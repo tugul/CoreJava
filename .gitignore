@@ -1,3 +1,6 @@
+# Leave some draft files out
+*draft/
+
 .metadata
 bin/
 tmp/
