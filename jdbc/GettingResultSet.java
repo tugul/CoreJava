@@ -33,24 +33,24 @@ public class GettingResultSet {
             String sqlSelect = "select name, age from people";
             ResultSet resultSet = statement.executeQuery(sqlSelect);
 
-            // next() returns true and moves cursor to first row, returns false if there is no next record.
-            // initial cursor points not to data. So it is must call to get data from ResultSet
+            // next() returns true and moves cursor to first row, and returns false if there is no record in next.
+            // As a cursor initially doesn't points to data, it is mandatory to call next() before accessing data
             while(resultSet.next()) {
-                // Access columns via its name
+                // Access columns via their names
                 String name = resultSet.getString("name");
                 int age = resultSet.getInt("age");
 
-                // Access columns via its ID. ID starts from 1!
+                // Access columns via their ID. ID starts from 1!
                 name = resultSet.getString(1);
                 age = resultSet.getInt(2);
 
-                // Getting as Object
+                // Get as an Object
                 Object nameObj = resultSet.getObject("name");
                 if (nameObj instanceof String)
                     name = (String)nameObj;
             }
 
-            // It will throw SQLException as cursor is not pointed to any data yet. So call next() and then get result
+            // It will throw SQLException as cursor is not pointing to any data yet. So call next(), then get result
             ResultSet resultSet1 = statement.executeQuery(sqlSelect);
             resultSet1.getInt(2);   // without a doubt, it will throw SQLException
 
@@ -83,18 +83,19 @@ public class GettingResultSet {
             // first(), last() - moves cursor to first and last record in set, respectively
             resultSet.first();
 
-            // void beforeFirst() - brings cursor to its initial position
-            // void afterLast() - moves cursor to after last record
+            // void beforeFirst() - brings cursor to its initial position (non-data)
+            // void afterLast() - moves cursor to after last record (non-data)
             resultSet.afterLast();
             resultSet.beforeFirst();
             System.out.println(resultSet.beforeFirst());    // DOES NOT COMPILE, beforeFirst() returns nothing
 
             // absolute(int) - moves cursor to certain position. Data row starts from 1.
-            // Position 0 is before first data row. Returns true if data exists, false otherwise
+            // Position 0 is before first data row. 
+            // it returns true if data exists, false otherwise
             resultSet.absolute(1);
             resultSet.absolute(-1); // negative value point starting from last position
 
-            // relative(int) - moves cursor by given number of rows backward or forward.
+            // relative(int) - moves cursor by the given number of rows backward or forward.
             resultSet.relative(1);  // move next
             resultSet.relative(-1); // moves previous
         }

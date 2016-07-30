@@ -9,7 +9,10 @@ import java.util.function.Supplier;
  * in that they both take no argument and return generic type.
  *
  * But they diverge in that Callable throws checked Exception
- * while Supplier's get() method does not.
+ * while Supplier's get() method does not. In short:
+ * 	Callable: V call() throws Exception
+ * 	Supplier: V get()
+* 	Runnable: void run()
  *
  */
 public class CallableVsSupplier {
@@ -24,6 +27,6 @@ public class CallableVsSupplier {
         useSupplier( () -> {throw new IOException();});  // DOES NOT COMPILE, as Supplier doesn't throw exception
 
         use( () -> {throw new IOException();});          // DOES NOT COMPILE, ambiguous call to overloaded methods
-        use( (Callable<Integer>)() -> {throw new IOException();});          // Ambiguity solved with cast
+        use( (Callable<Integer>)() -> {throw new IOException();});       // Ambiguity is resolved by explicit cast
     }
 }

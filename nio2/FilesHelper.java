@@ -13,10 +13,10 @@ import java.util.List;
  * most of its method throws IOException
  * most of its method takes optional varargs: values of StandardCopyOption enum
  * 
- * StandardCopyOption.ATOMIC_MOVE : operation performed as seemingly instant even it is huge 
+ * StandardCopyOption.ATOMIC_MOVE : operation performed as seemingly instant even it is time-taking and huge 
  * StandardCopyOption.COPY_ATTRIBUTES : all metadata will be copied with file
- * StandardCopyOption.NOFOLLOW_LINKS : if symbolic link, it won't be traversed
- * StandardCopyOption.REPLACE_EXISTING : if target file exists, it will override 
+ * StandardCopyOption.NOFOLLOW_LINKS : if symbolic link, its target won't be traversed
+ * StandardCopyOption.REPLACE_EXISTING : the operation will override target file if that exists 
  *
  */
 public class FilesHelper {
@@ -67,23 +67,23 @@ public class FilesHelper {
             Files.move(Paths.get("hem"), Paths.get("destinationDir"));
 
         // Files.delete(Path) - deletes file or non-empty directory, throws exception if doesn't exist
-        // Files.deleteIfExists(Path) - same as above, but doesn't throw exception and returns boolean false
+        // Files.deleteIfExists(Path) - same as above, but returns boolean false instead of throwing exception
         Files.delete(Paths.get("fromStream.out"));
         Files.deleteIfExists(Paths.get("fromStream.out"));
 
         // Files.newBufferedReader(Path, Charset) - read a file using java.io stream, returns BufferedReader object
-        // Files.newBufferedWriter(Path, Charset) - write a file using java.io stream, returns BufferedReader object
+        // Files.newBufferedWriter(Path, Charset) - write a file using java.io stream, returns BufferedWriter object
         BufferedReader br = Files.newBufferedReader(inputFile, Charset.forName("UTF-8"));
         BufferedWriter bw = Files.newBufferedWriter(inputFile, Charset.forName("UTF-8"));
         br.close();
         bw.close();
 
-        // Files.readAllLines(Path) - read a file once and return list containing each line as a single element
-        // it can throw OutOfMemoryError if file is huge. Files.lines(Path) is more efficient as it uses lazy loading
+        // Files.readAllLines(Path) - read a file once and return a list whose an element is a single line of the file
+        // Throws OutOfMemoryError if file is huge. Files.lines(Path) is more efficient as it uses lazy loading
         List<String> lines = Files.readAllLines(Paths.get("input.txt"));
         
         // Searching in a directory
         // Files.find(Path, int depth, BiPredicate) - same as walk method except for depth parameter
-        Files.find(Paths.get("dir"), 10, (a,b) -> b.isRegularFile()).forEach(System.out::println);;
+        Files.find(Paths.get("dir"), 10, (a,b) -> b.isRegularFile()).forEach(System.out::println);
     }
 }
