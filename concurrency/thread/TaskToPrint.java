@@ -3,7 +3,7 @@ package concurrency.thread;
 import java.util.stream.IntStream;
 
 /**
- * Simple task is defined here.
+ * Simple task to print 1-5 is defined here.
  *
  */
 public class TaskToPrint implements Runnable {
