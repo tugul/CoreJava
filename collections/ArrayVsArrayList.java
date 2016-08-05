@@ -3,8 +3,21 @@ package collections;
 import java.util.*;
 
 /**
- * Sort array       : Arrays.sort(T[] a);
- * Sort array list  : Collections.sort(List<T> a)
+ * - Main differences between Array and ArrayList
+ * Size: is mandatory and can't be changed for Array while ArrayList can be declared without size and is re-sizable.
+ * Dimension: Array can be multi-dimensional while ArrayList is only single dimensional
+ * Primitive: ArrayList can't store primitives, instead can store their wrapper objects 
+ * Generics: ArrayList supports generics, so it is type-safe
+ * Adding an element: Array element is added through asignment operator, while ArrayList use add() method 
+ * Length: Array has length variable while ArraList has size() method
+ * Performance: Array is faster while ArrayList is bit slower, especially when comparing
+ * Sorting: 
+ * 	Array      : Arrays.sort(T[] a);
+ * 	ArrayList  : Collections.sort(List<T> a)
+ *
+ * - Similarities
+ * Both are ordered(doesn't mean sorted) and use index to refer to their elements
+ * Can contain duplicate elements and null values
  *
  */
 public class Juxtaposition {
