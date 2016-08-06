@@ -31,6 +31,9 @@ import java.util.Deque;
  * E 		remove()	- remove/return front element of queue or throws an EXCEPTION if queue is empty
  * boolean 	remove(E e)	- remove a given element of queue, and throws an EXCEPTION if queue is empty (from Collection)
  * 
+ * Note: ArrayDeque is recommended over Stack which is a legacy class. So when using ArrayDeque, 
+ * use push/pop/peek for LIFO (stack) and use offer/poll/peek for FIFO (single-ended queue)
+ * 
  */
 public class AboutQueue {
 	public static void main(String[] args) {
@@ -43,17 +46,17 @@ public class AboutQueue {
 		queue.push(9);
 		queue.offer(8);
 		
-		System.out.println(queue);	// [9, 11, 12, 13, 14, 10, 8]
+		System.out.println(queue);			// [9, 11, 12, 13, 14, 10, 8]
 		
-		System.out.println(queue.element());	// 9
-		System.out.println(queue.remove(13));	//	true
+		System.out.println(queue.element());		// 9
+		System.out.println(queue.remove(13));		// true
 		System.out.println(queue.poll());		// 9
 		System.out.println(queue.remove());		// 11
 		System.out.println("peeked: " + queue.peek());	// peeked: 12
-		System.out.println(queue.element());	// 12
+		System.out.println(queue.element());		// 12
 		System.out.println(queue.pop());		// 12
 		
-		System.out.println(queue);	// [14, 10, 8]
+		System.out.println(queue);			// [14, 10, 8]
 	}
 }
 /** Output:
