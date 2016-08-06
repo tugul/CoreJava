@@ -20,7 +20,7 @@ import java.util.*;
  * Can contain duplicate elements and null values
  *
  */
-public class Juxtaposition {
+public class ArrayVsArrayList {
     public static void main(String[] args) {
         // Sorting array and array list
         Random rand = new Random();
