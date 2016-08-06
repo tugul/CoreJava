@@ -34,6 +34,8 @@ import java.util.Deque;
  * Note: ArrayDeque is recommended over Stack which is a legacy class. So when using ArrayDeque, 
  * use push/pop/peek for LIFO (stack) and use offer/poll/peek for FIFO (single-ended queue)
  * 
+ * ArrayDeque doesn't allow to add null because it has a meaning that poll/peek returns null when queue is empty.
+ * 
  */
 public class AboutQueue {
 	public static void main(String[] args) {
