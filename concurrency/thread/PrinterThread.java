@@ -3,7 +3,7 @@ package concurrency.thread;
 import java.util.stream.IntStream;
 
 /**
- * Simple thread is defined with a own task to execute
+ * Simple thread is defined with a own task to print 1-5
  *
  */
 public class PrinterThread extends Thread {

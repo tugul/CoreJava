@@ -1,7 +1,8 @@
 Concurrent Collections
 ---
-Read/write access are synchronized so that data consistency is kept during multi-thread execution.
+Synchronization protects data integrity at the price of performance. Concurrent collections provides performance enhancements that prevents unnecessary synchronizations. Read/write access are synchronized so that data consistency is kept during multi-thread execution outside synchronized method or block. 
 
+However, if all threads access to immutable or read-only collection, it is unnecessary to use concurrent collections. 
 
 Concurrent collection classes
 ---

@@ -1,15 +1,15 @@
 Collections framework has four main data structure types (list, set, queue and map). 
-List, set and queue interfaces extends Collection interface. 
+List, set and queue interfaces extends Collection interface which extends Iterable interface. 
 
 ##### 1. List — Ordered collection of elements that can duplicate
-- ArrayList: Standard resizable list.
-- LinkedList: Can easily add/remove from beginning or end.
+- ArrayList: Standard re-sizable list.
+- LinkedList: implements both List and Deque. Can easily add/remove from beginning or end.
 - Vector: Older version of ArrayList, thread-safe.
-- Stack: Older last-in, first-out class.
+- Stack: Older last-in, first-out class, newer version ArrayDeque is more flexible
 
 ##### 2. Set —Does not allow duplicates
 - HashSet: Uses hashcode() to find unordered elements.
-- TreeSet: Sorted and navigable. Does not allow null values.
+- TreeSet: implements NavigableSet which extends SortedSet. Does not allow null values.
 
 ##### 3. Queue —Orders elements for processing
 - LinkedList: Can easily add/remove from beginning or end.

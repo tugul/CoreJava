@@ -7,15 +7,16 @@ import java.util.concurrent.TimeUnit;
 /**
  *
  * - Blocking queue/deque
- * LinkedBlockingDeque
- * LinkedBlockingQueue
+ * LinkedBlockingDeque implements BlockingDeque interface
+ * LinkedBlockingQueue implements BlockingQueue interface
  *
  * They are just like regular queues except for additional methods that wait for specified amount of time
  * to complete read/write to collection. For example:
  *
  * - BlockingQueue methods:
  * offer(E e, long timeout, TimeUnit) - add item waiting for specified time, returns false if timeout elapsed
- * poll(long timeout, TimeUnit) - take/remove item from queue waiting for specified time, returns null if time elapsed
+ * poll(long timeout, TimeUnit) - take/remove element waiting for specified time if necessary until the element 
+ * 								becomes available, returns null if time elapsed
  *
  * - BlockingDeque methods
  * offerFirst(E e, long timeout, TimeUnit)
