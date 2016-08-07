@@ -19,3 +19,8 @@ List, set and queue interfaces extends Collection interface which extends Iterab
 - HashMap: Uses hashcode() to find keys, allows null key
 - TreeMap: Sorted map. Does not allow null keys.
 - HashTable: Older version of HashMap. Does not allow null keys or values.
+
+Sorting:
+ - Collections.sort(List\<T extends Comparable> list)
+ - Collections.sort(List\<T> list, Comparator comparator)
+ - Use TreeMap to sort Map by key or value
