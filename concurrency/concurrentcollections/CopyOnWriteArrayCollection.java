@@ -24,26 +24,35 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class CopyOnWriteArrayCollection {
     public static void main(String[] args) {
-        List<Integer> l1 = Arrays.asList(1,2,3);
-        List<Integer> l2 = new CopyOnWriteArrayList<>(l1);
-        Set<Integer> s3 = new ConcurrentSkipListSet<>();
-        s3.addAll(l1);
+        List<Integer> arrayList = Arrays.asList(1,2,3);
+        
+        List<Integer> copyOneWriteArrayList = new CopyOnWriteArrayList<>(arrayList);
+        Set<Integer> skipListSet = new ConcurrentSkipListSet<>();
+        skipListSet.addAll(arrayList);
 
-        // It will iterate 3 times
-        for(Integer item: l2)
-            l2.add(4); // x1
+        // It will iterate 3 times because iteration goes through only original list
+        // copy of the list is updated with 3 more new items
+        // [1, 2, 3, 4, 4, 4]
+        for(Integer item: copyOneWriteArrayList)
+            copyOneWriteArrayList.add(4);
+        
+        // It will iterate 4 times, because set is updated during iteration.
+        // And 5 is added only once as nature of set is uniqueness elements
+        // [1, 2, 3, 5]
+        for(Integer item: skipListSet)
+            skipListSet.add(5);
 
-        // It will iterate 4 times, because 5 is added only once to unique set
-        for(Integer item: s3)
-            s3.add(5); // x2
-
-        // 3, 6, 4
-        System.out.println(l1.size()+" "+l2.size()+" "+s3.size());
-
-        // It will infinitely loop
+        // Finally, sizes are all different
+        System.out.println(arrayList.size()			// 3
+        		+ " " +copyOneWriteArrayList.size()	// 6
+        		+ " " +skipListSet.size());			// 4
+        
+        // Extra
+        // It is INFINITE LOOP as on each iteration a new element is added 
+        // and the skipList Set is updated accordingly 
         int i = 100;
-        for(Integer item: s3)
-            s3.add(i++);
+        for(Integer item: skipListSet)
+            skipListSet.add(i++);
     }
 }
 
