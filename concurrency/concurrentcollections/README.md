@@ -1,23 +1,31 @@
 Concurrent Collections
 ---
-Synchronization protects data integrity at the price of performance. Concurrent collections provides performance enhancements that prevents unnecessary synchronizations. Read/write access are synchronized so that data consistency is kept during multi-thread execution outside synchronized method or block. 
+Synchronization protects data integrity at the price of performance. Concurrent collections provide performance enhancements that prevent unnecessary synchronizations. Read/write accesses to collection are synchronized so that data consistency is kept during multi-thread execution outside synchronized method or block. 
 
 However, if all threads access to immutable or read-only collection, it is unnecessary to use concurrent collections. 
 
 Concurrent collection classes
 ---
-ConcurrentHashMap - 
-ConcurrentLinkedDeque
-ConcurrentLinkedQueue
+<ul>
+<li>ConcurrentHashMap</li>
+<li>ConcurrentLinkedDeque</li>
+<li>ConcurrentLinkedQueue</li>
+</ul>
 
-ConcurrentSkipListMap
-ConcurrentSkipListSet
+<ul>
+<li>ConcurrentSkipListMap</li>
+<li>ConcurrentSkipListSet</li>
+</ul>
 
-CopyOnWriteArrayList
-CopyOnWriteArraySet
+<ul>
+<li>CopyOnWriteArrayList</li>
+<li>CopyOnWriteArraySet</li>
+</ul>
 
-LinkedBlockingDeque
-LinkedBlockingQueue
+<ul>
+<li>LinkedBlockingDeque</li>
+<li>LinkedBlockingQueue</li>
+</ul>
 
 **Blocking queues**
 They are just like regular queues except for its additional methods which wait specified amount of time 
