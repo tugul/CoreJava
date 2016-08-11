@@ -1,4 +1,4 @@
-Concurrency API(java.util.concurrent package) was initially introduced in Java 5 
+Concurrency API (java.util.concurrent package) was initially introduced in Java 5 
 to ease threads management and since then enriched so much with many classes and framework.  
 
 Runnable 
@@ -52,25 +52,32 @@ used to force a set of threads to wait until they are at a certain stage of exec
 
 Threading problems
 ---
- Deadlock - two ore more processes are blocked forever, each waiting on the other
- Starvation - single thread is perpetually denied access to a shared resource or lock. 
+<b>Deadlock</b> - multiple processes are blocked forever, each waiting on the other<br>
+<b>Starvation</b> - single thread is perpetually denied access to a shared resource or lock. 
               The thread is still active, but it is unable to complete its work as a result of other
-              threads constantly taking the resource that they trying to access.
- Livelock - occurs when two or more threads are conceptually blocked forever, although they
+              threads constantly taking the resource that they trying to access.<br>
+<b>Livelock</b> - occurs when two or more threads are conceptually blocked forever, although they
             are each still active and trying to complete their task. Livelock is a special case of resource
             starvation in which two or more threads actively try to acquire a set of locks, are unable to
-            do so, and restart part of the process.
- Race condition - It occurs when two threads execute at the same time, resulting in an unexpected outcome. 
+            do so, and restart part of the process.<br>
+<b>Race condition</b> - occurs when several threads access one resource at the same time and mess its state. 
 
  
 Synchronization
 ---
-synchronized key word is used for only in method declaration or around code block. 
-When method is declared as synchronized, lock is created on the whole object, might be less efficient 
-On the other hand, synchronized block uses an object to create a lock
-Alternative to synchronized block/method, Atomic primitive classes can be used: 
-AtomicBoolean, 
-AtomicInteger, AtomicIntegerArray 
-AtomicLong, AtomicLongArray
-AtomicReference, AtomicReferenceArray 
-  
+<i>synchronized</i> key word is used for in method declaration or around code block. 
+When method is declared as synchronized, lock is created on the whole object, might be less efficient.
+On the other hand, synchronized block uses an object to create a lock. Static synchronized method orders thread access across all instances rather than single instance. <br>
+Alternative to synchronized block or method, concurrent collections or atomic primitive classes can be used
+
+<b>Atomic classes</b><br>
+java.util.concurrent.atomic package provides atomic classes which supports atomic access to single values, such as primitive value or object reference. They can be ideally used in scenarios where multiple threads read/write single counter. Increment/decrement operators ++/-- are not thread-safe meaning that while one thread is updating and taking new value, other thread can update it meantime. With atomic nature, atomic classes have methods to perform increment/decrement as a single unit of operation without interference by other threads.<br>
+<i>AtomicBoolean, -- </i><br>
+<i>AtomicInteger, AtomicIntegerArray</i><br> 
+<i>AtomicLong, AtomicLongArray</i><br>
+<i>AtomicReference, AtomicReferenceArray</i><br> 
+
+<b>Concurrent collections</b><br>
+Concurrent collections provide performance enhancements that prevent unnecessary synchronizations. Read/write accesses to collection are synchronized so that data consistency is kept during multi-thread execution outside synchronized method or block. Go to <a href="concurrentcollections">concurrent collections</a>.
+
+ 
