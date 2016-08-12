@@ -37,11 +37,11 @@ interface MyFunctionalInteface {
 
 public class MethodReference {
 	
-	static void runConsumer(Consumer<List<Integer>> consumer){
-		List<Integer> numbers = Arrays.asList(3, 1, 12, 5, 4);
-		consumer.accept(numbers);
-		System.out.println(numbers);
-	}
+    static void runConsumer(Consumer<List<Integer>> consumer){
+    	List<Integer> numbers = Arrays.asList(3, 1, 12, 5, 4);
+    	consumer.accept(numbers);
+    	System.out.println(numbers);
+    }
 	
     static void runPredicate(Predicate<String> predicate){
     	System.out.println(predicate.test("a"));
@@ -73,6 +73,9 @@ public class MethodReference {
         Predicate<String> lambdaExp2 = s -> strObj.startsWith(s);
         Predicate<String> methodRef2 = strObj::startsWith;
         runPredicate(methodRef2);
+        
+        BiPredicate<String, String> lambdaExp21 = (s, prefix) -> s.startsWith(prefix);
+        BiPredicate<String, String> methodRef21 = String::startsWith;
 
         // 3. Calling instance method on instance to be determined at runtime
         Predicate<String> lambdaExp3 = str -> str.isEmpty();
