@@ -74,13 +74,13 @@ public class MethodReference {
         Predicate<String> methodRef2 = strObj::startsWith;
         runPredicate(methodRef2);
         
-        BiPredicate<String, String> lambdaExp21 = (s, prefix) -> s.startsWith(prefix);
-        BiPredicate<String, String> methodRef21 = String::startsWith;
-
         // 3. Calling instance method on instance to be determined at runtime
         Predicate<String> lambdaExp3 = str -> str.isEmpty();
         Predicate<String> methodRef3 = String::isEmpty;
         runPredicate(methodRef3);	// true
+        
+        BiPredicate<String, String> lambdaExp31 = (s, prefix) -> s.startsWith(prefix);
+        BiPredicate<String, String> methodRef31 = String::startsWith;
 
         // 4. Calling constructor
         Supplier<LinkedList> lambdaExp4 = () -> new LinkedList();
