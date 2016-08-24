@@ -2,23 +2,26 @@ package enums;
 
 /**
  *
- * Enums implicitly inherit class java.lang.Enum
- * In jvm, it is converted to class. Its elements are instance of the enumeration class.
- * - Enums are public(or default) static final. So can't be extended
- * - Enums can have members: fields, constructor and methods
- * - Enum elements must be first, before any other members if any.
+ * Java Enum 
+ * - implicitly inherit class java.lang.Enum
+ * - In jvm, it is converted to class. Its elements are instance of the enumeration class.
+ * - It is public(or default) static final. So can't be extended
+ * - It can have members: fields, constructor and methods
+ * - Its elements must be first, before any other members if any.
  * - If enum defines abstract method, each constant element must override it
  * - Its constructor can be only private. Making it protected or public lead compilation error
  *
- * Methods:
+ * Enum methods:
  * - values(): returns array of all elements
  * - valueOf(String str) : parses String and converts to Enum element
  * - name() : returns name of element in String
- * - ordinal() : index of element
+ * - ordinal() : returns index of element
  */
 
 enum Planet {
-    Earth, Mars, Saturn     // semicolon not mandatory when no other extra members
+    // semicolon is not mandatory at the end
+    // when there is no other extra members after elements
+    Earth, Mars, Saturn
 }
 
 enum Season {
@@ -46,13 +49,13 @@ enum JobPosition {
         this.description = description;
     }
 
-    // Abstract method must be overridden in each constant
+    // Abstract method must be overridden in each enum constant
     abstract void sayMyName();
 
     void sayMySalary() { System.out.println("No way!"); }
 }
 
-public class TestEnums {
+public class AboutEnum {
     public static void main(String[] args) {
         JobPosition devOne = JobPosition.valueOf("Developer");
         JobPosition IamCto = JobPosition.Manager.valueOf("CTO");

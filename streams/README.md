@@ -1,4 +1,6 @@
-Java 8 has generic **Stream\<T>** and three specific streams for primitives, **DoubleStream**, **IntStream** and **LongStream**
+Java 8 Stream API is a big step towards functional programming and leverages multi-core processors which are ubiquitous nowadays. Stream represents a series of objects sourced from collection and support data processing queries, SQL like operations. 
+
+There are generic interface **Stream\<T>** and three specific interfaces for primitives, **DoubleStream**, **IntStream** and **LongStream**
 
 Difference between **Stream\<Integer>** and **IntStream** is that:
 **IntStream** is for primitives (int, short, byte and char)
