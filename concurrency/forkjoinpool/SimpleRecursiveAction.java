@@ -11,6 +11,12 @@ import java.util.concurrent.RecursiveAction;
  *
  * RecursiveAction calls invoke()/fork() method per each sub task or invokeAll() once  for list of sub tasks
  *
+ * - ForkJoinPool
+ * concrete class implementing Executor service
+ * ForkJoin class's instance to be submitted to instance of ForkJoinPool via invoke or submit methods 
+ * It has two constructors. One without argument chooses parallelism level same as number of processor.
+ * Another constructor with int argument set parallelism level to given argument
+ *
  */
 public class SimpleRecursiveAction extends RecursiveAction {
     private long work = 0;
@@ -32,8 +38,12 @@ public class SimpleRecursiveAction extends RecursiveAction {
 
             // 1. Invoke each task in loop
             subTasks.forEach((task) -> task.invoke());
+            // We can call compute method as well. But it will make current thread to wait
+            // meaning that tasks will be executed in single thread manner
+            //subTasks.forEach((task) -> task.compute());
 
             // 2. Invoke all tasks
+            // calling static void invokeAll method which takes varargs of ForkJoinTask instances
             //invokeAll(subTasks);
         }
         else
@@ -43,6 +53,7 @@ public class SimpleRecursiveAction extends RecursiveAction {
     public static void main(String[] args) {
         SimpleRecursiveAction recursiveAction = new SimpleRecursiveAction(32);
 
+        // Create a thread pool with 4 level parallelism
         ForkJoinPool forkJoinPool = new ForkJoinPool(4);
         forkJoinPool.invoke(recursiveAction);
     }
