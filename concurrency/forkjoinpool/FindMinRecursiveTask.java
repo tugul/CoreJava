@@ -5,13 +5,13 @@ import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 
 /**
- * - RecursiveTask
- * extends abstract class ForkJoinTask
- *
+ * This simple example finds minimum value of given number list
+ * using ForkJoinPool by extending RecusiveTask class
  *
  */
 public class FindMinRecursiveTask extends RecursiveTask<Integer> {
-    private Integer[] numbers;
+
+	private Integer[] numbers;
     private int index1;
     private int index2;
 
@@ -30,24 +30,32 @@ public class FindMinRecursiveTask extends RecursiveTask<Integer> {
 
             FindMinRecursiveTask subTask = new FindMinRecursiveTask(numbers, index1, index3);
 
-            // What is the difference between below calls
+            // With below 2 kinds of calls, current thread will be frozen until subTask is finished.
+            // So we will loose parallelism 
             //int result = (int)subTask.fork().join();
-            int result = (int)subTask.fork().join();
-//            int result = (int)subTask.compute();
+            //int result = (int)subTask.compute();
+            
+            // It submits subTask to thread pool to use parallelism
+            ForkJoinTask<Integer> firstPart = subTask.fork();
 
-            return Math.min(result, new FindMinRecursiveTask(numbers, index3, index2).compute());
+            return Math.min(new FindMinRecursiveTask(numbers, index3, index2).compute(), firstPart.join());
         }
     }
 
     public static void main(String[] args){
+    	// Creating a thread pool
         int numberOfThreads = 5;
         ForkJoinPool fjPool = new ForkJoinPool(numberOfThreads);
 
+        // Defining a task to be executed 
         Integer[] numbers = {99, 2, -44, 32, 34, 0, -62, 89};
         ForkJoinTask<Integer> task = new FindMinRecursiveTask(numbers, 0, numbers.length-1);
 
-        int minValue1 = ((FindMinRecursiveTask)task).compute();  // direct call without using parallelism
-        int minValue2 = fjPool.invoke(task);            // It uses thread pool
+        // direct call without using parallelism
+        int minValue1 = ((FindMinRecursiveTask)task).compute();
+        
+        // It uses thread pool
+        int minValue2 = fjPool.invoke(task);            
 
         System.out.println(minValue2);   // -62
         System.out.println(minValue1);   // -62
