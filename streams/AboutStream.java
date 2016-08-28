@@ -45,9 +45,9 @@ public class AboutStream {
         // long count() returns count of elements in a stream
         System.out.println(empty.count()); // 0
 
-        // min/max accepts Comparator and returns Optional<T>
-        // once min is found, stream is destroyed and no longer usable
-        System.out.println(stream123.min((a1, a2) -> a1 - a2)); 
+        // Optional<T> min/max(Comparator) 
+        // once minimum value is found, stream is destroyed and no longer usable
+        System.out.println(stream123.min((a1, a2) -> a1 - a2)); 	// Optional[1]
 
         // findAny(), findFirst() takes no argument and returns Optional<T>
         // mostly used after filter method
@@ -55,7 +55,7 @@ public class AboutStream {
         planetsFromList.findAny().ifPresent(System.out::println);   // Mars
         Stream.generate(() -> "infinite").findFirst().ifPresent(System.out::println); // "infinite", terminates the infinite stream
 
-        // find*** methods on primitive streams return primitive Optionals(OptionalInt, OptionalLong or OptionalDouble)
+        // find*** methods on primitive streams return primitive Optional classes(OptionalInt, OptionalLong or OptionalDouble)
         IntStream odds = IntStream.iterate(11, x -> x + 2);
         OptionalInt optFive = odds.filter(x -> x%5 == 0).findFirst();
         System.out.println(optFive.getAsInt());
@@ -69,7 +69,8 @@ public class AboutStream {
         Stream<String> infiniteOnes = Stream.generate(()->"One");
         System.out.println(infiniteOnes.anyMatch(isFirstUpperCase));      // true
 
-        // forEach() takes Consumer and returns nothing
+        // void forEach(Consumer)
+        // void forEachOrdered(Consumer) - processes one element at a time, used in multi-threaded cases
         list.stream().forEach(System.out::println);
 
         // REDUCTION: reduce() - general purpose reduction method unlike sum, max, min ... 
@@ -106,9 +107,8 @@ public class AboutStream {
         // filter
         // Stream<T> filter(Predicate<? super T> predicate)
         words.stream().filter(x -> x.startsWith("a")).forEach(System.out::println); // a
-
-        // distinct() uses equals() to compare
-        // Stream<T> distinct()
+ 
+        // Stream<T> distinct() - uses equals() to compare
         words.stream().distinct().forEach(System.out::println);
 
         // Stream<T> limit(int maxSize) - set maximum size of stream
@@ -128,7 +128,7 @@ public class AboutStream {
         System.out.println(together); // [2, 3, 11, 12]
 
         // sorted - returns a stream with sorted elements
-        // Stream<T> sorted()
+        // Stream<T> sorted() - sorts Comparable objects, otherwise exception is thrown
         // Stream<T> sorted(Comparator<? super T> comparator)
         words.stream().sorted().forEach(System.out::println);
         words.stream().sorted(Comparator.reverseOrder()).forEach(System.out::println);
