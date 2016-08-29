@@ -32,13 +32,17 @@ class C {
 
 public class AnonymousInnerClass {
     public static void main(String[] args) {
+    	String myName = "My name: ";	// effectively final field
+    	String hi = "Hi ";
+    	hi = "Hello ";					// re-assigned, so no longer effectively final
+    	
         // Anonymous class implementing interface
         A a = new A() {
             public void printMyName(){
-                System.out.println("My name: A");
+                System.out.println(myName + "A"); 
             }
             void sayHi(){
-                System.out.println("Hi A");
+                System.out.println(hi + "A");	// DOES NOT COMPILE, can access only to effectively final fields
             }
         };
         a.printMyName();    // My name: A
