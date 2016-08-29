@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
  * more expressive than null, so supports functional programming style
  *
  * - Static methods to create Optional
- * Optional<T> of - creates optional with given value. But ofNullable is safer
+ * Optional<T> of - creates optional with given value. Can't create value from null, so ofNullable is safer
  * Optional<T> ofNullable(T) - creates optional with given value. If the value is null, it creates Optional.empty()
  * Optional<T> empty() - creates optional object with empty value in it
  * 
@@ -55,11 +55,14 @@ public class AboutOptional {
         Optional optionalDate = Optional.of(LocalDate.now());
         OptionalInt optionalInt = OptionalInt.of(5);
         OptionalDouble optionalDouble = OptionalDouble.of(.5);
-        
+                
         // ofNullable(T) - equivalent to ternary operator and replace it 
         Object value = null;
         Optional obj1 = (value== null) ? Optional.empty(): Optional.of(value);
-        Optional obj2 = Optional.ofNullable(value);        
+        Optional obj2 = Optional.ofNullable(value);
+        
+        System.out.println(Optional.of(null));			// throws NullPointerException
+        System.out.println(Optional.ofNullable(null));	// Optional.empty 
 
         System.out.println(findAverage(10, 30));    // Optional[20.0]
         System.out.println(findAverage());          // Optional.empty
@@ -78,7 +81,8 @@ public class AboutOptional {
         // It runs Consumer logic if value is present, otherwise won't run
         emptyOptional.ifPresent(System.out::println);   // no output
 
-        System.out.println(emptyOptional.orElse(Double.NaN));
+        System.out.println(emptyOptional.orElse(null));			// null
+        System.out.println(emptyOptional.orElse(Double.NaN));	// Nan
         System.out.println(emptyOptional.orElseGet(() -> Math.random()));  // orElseGet takes double
         System.out.println(emptyOptional.orElseThrow(() -> new IllegalStateException()));   // using lambda
         System.out.println(emptyOptional.orElseThrow(IllegalStateException::new));          // method reference
