@@ -1,11 +1,11 @@
 package classes.nested;
 
 /**
- * Anonymous inner class / Anonymous class
- * - Doesn't have name and it is defined in a method
- * - Either implements interface or extends class (abstract or concrete)
- * - Can't have constructor or static initializer
- * - Can have instance initializer, local classes, new method or field, but not accessible from outside
+ * - Anonymous inner class / Anonymous class
+ * Is defined in a method and doesn't have name 
+ * Either implements interface or extends class (abstract and concrete)
+ * Can't have constructor, static members or static initializer
+ * Can have instance initializer, local classes, new instance methods or fields, but not accessible from outside
  *
  * Usage:
  * - When no need to create separate class for implementing interface because it will be used only once
@@ -42,11 +42,12 @@ public class AnonymousInnerClass {
             }
         };
         a.printMyName();    // My name: A
-        a.sayHi();          // DOES NOT COMPILE, interface doesn't define this method
+        a.sayHi();          // DOES NOT COMPILE, interface A doesn't define this method
 
         // Anonymous class extending abstract class
         B b = new B() {
             int value;
+            static String name; // DOES NOT COMPILE, non-static type can't have static member
             public void printMyName(){
                 System.out.println("My name: concrete B");
             }
