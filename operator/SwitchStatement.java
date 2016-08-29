@@ -8,6 +8,7 @@ package operator;
  * Case label:
  * - Allows only constant expression, such as any non-constant variables
  * - must be unique
+ * - doesn't allow number and allow only Enum elements if decision variable is Enum
  */
 public class SwitchStatement {
     public static void main(String[] args) {
