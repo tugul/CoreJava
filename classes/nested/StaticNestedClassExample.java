@@ -3,19 +3,20 @@ package classes.nested;
 import java.io.Serializable;
 
 /**
- * Inner class defined as static in a class
- * - can access to instance members of outer class only through instance of outer class
- * - can access to static members of outer class directly using name of outer class
- * - behaves and interacts with other classes(inc. outer one) like it is top-level class though nested
- * - accessed from outside classes with name of outer class without need for instance of outer class
- * - can have any access modifier like inner class
- * - outer class can directly access to its static members, but to its instance members only through its instance
+ * - Static nested class
+ * Inner class defined as static inside a class
+ * can access to instance members of outer class only through instance of outer class
+ * can access to static members of outer class directly using name of outer class
+ * behaves and interacts with other classes(inc. outer one) like it is top-level class though nested
+ * accessed from outside classes with name of outer class without need for instance of outer class
+ * can have any access modifier like inner class
+ * outer class can directly access to its static members, but to its instance members only through its instance
  */
 class OuterClass {
     private static String args = " args";
     private String mainGot = " main got ";
 
-    static class StaticNestedClass implements Serializable {
+    protected static class StaticNestedClass  {
         protected OuterClass outerObj;
         static StaticNestedClass nestedObj;
 
