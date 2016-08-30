@@ -3,12 +3,13 @@ package datetimes;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 
 /**
  * - Instant class
- * represents specific moment in GMT time zone
+ * concrete final class representing specific moment in GMT time zone
  * ZonedDateTime can be converted to Instant, but not LocalDateTime as it doesn't have time zone info
-
+ * 
  */
 public class UsingInstant {
     public static void main(String[] args) {
@@ -36,5 +37,12 @@ public class UsingInstant {
         System.out.println(tomorrow);           // 2016-06-01T21:12:41.188Z
         System.out.println(nextHour);           // 2016-05-31T22:12:41.188Z
         System.out.println(nextWeek1);          // 2016-06-07T21:12:41.188Z
+        
+        // Instant truncatedTo(TemporalUnit unit)
+        // Returns a copy of given instant whose units' values after given unit are truncated 
+        Instant now = Instant.now();								// 2016-08-30T14:37:30.747Z
+        System.out.println(now.truncatedTo(ChronoUnit.MINUTES));	// 2016-08-30T14:37:00Z
+        System.out.println(now.truncatedTo(ChronoUnit.HOURS));		// 2016-08-30T14:00:00Z
+        System.out.println(now.truncatedTo(ChronoUnit.DAYS));		// 2016-08-30T00:00:00Z
     }
 }
