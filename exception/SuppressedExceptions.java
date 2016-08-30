@@ -8,7 +8,6 @@ package exception;
  * In this case, exceptions from implicit finally block provided by try-with-resource are suppressed and primary
  * exception will be the one thrown from try block.
  *
- *
  */
 class BadClass implements AutoCloseable {
     String label;
@@ -42,8 +41,9 @@ public class SuppressedExceptions {
         Suppressed exception: Can't close ONE
 */
 
-        // Try block doesn't throw any exception. Last thrown one from implicit finally block
-        // becomes primary and previous ones will be suppressed
+        // Try block doesn't throw any exception. First thrown one from implicit finally block
+        // becomes primary and last ones will be suppressed. In below case two is closed first
+        // according to reverse ordering and one will be closed last
         try(BadClass one = new BadClass("ONE");
             BadClass two = new BadClass("TWO")){
 
