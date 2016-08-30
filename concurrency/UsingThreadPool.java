@@ -25,7 +25,7 @@ import java.util.stream.IntStream;
  *
  *
  */
-public class UsingThreadPools {
+public class UsingThreadPool {
     public static void main(String[] args) throws InterruptedException {
         int numberOfCPU = Runtime.getRuntime().availableProcessors();
 

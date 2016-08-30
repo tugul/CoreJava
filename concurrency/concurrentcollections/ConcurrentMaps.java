@@ -2,14 +2,20 @@ package concurrency.concurrentcollections;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * - Concurrent maps
  * Changes in data during iteration are immediately reflects to original data
  * 
- * ConcurrentHashMap : implements ConcurrentMap
- * ConcurrentSkipListMap : implements ConcurrentMap, also NavigableMap so its keys are sorted 
+ * ConcurrentHashMap : implements ConcurrentMap, 
+ * ConcurrentSkipListMap : implements ConcurrentMap, also NavigableMap so its keys are sorted
+ * those Map classes don't accept null in key or value.
+ * TreeMap - accepts null in value, but not in key
+ * HashMap - accepts null in both of key and value
+ * Similarly, ConcurrentSkipListSet and TreeSet don't accept null while HashSet accepts null
  * 
  * - Below 2 classes have thread safety, but in different ways:
  * class SynchronizedMapData
@@ -55,6 +61,8 @@ public class ConcurrentMaps {
     	concurrentMap.put("a", "1");
     	concurrentMap.put("b", "2");
     	concurrentMap.put("c", "3");
+    	concurrentMap.put(null, "3");	// throws NullPointerException, doesn't accept NULL in key and value
+    	concurrentMap.put("d", null);	// throws NullPointerException
     	
     	System.out.println(concurrentMap);	// {a=1, b=2, c=3}
     	for(String key : concurrentMap.keySet())

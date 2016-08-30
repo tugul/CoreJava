@@ -33,6 +33,8 @@ public class ParallelStream {
 		Stream<Integer> stream1 = numbers.stream();
 		Stream<Integer> stream2 = numbers.stream();
 		
+		System.out.println("Stream2 is parallel? : " + stream2.isParallel());	// false
+		
 		// always print 123456
 		stream1.forEach(i -> System.out.print(i));	
 		
@@ -43,6 +45,13 @@ public class ParallelStream {
 		Stream<Integer> parallelStream2 = numbers.parallelStream();
 		
 		System.out.println();
+		
+		// Converting stream into parallel one makes original stream parallel too
+		System.out.println("Stream2 is parallel? : " + stream2.isParallel());	// true
+		
+		// Stream composed of parallel or non-parallel streams is non parallel 
+		System.out.println("Stream of mixed streams is parallel? : " + Stream.of(stream1, stream2).isParallel());
+		System.out.println("Stream of parallel stream is parallel? : " + Stream.of(parallelStream1, parallelStream2).isParallel());
 		
 		// output is UNPREDICTABLE
 		// it will print in parallel, one possibility: 462531
