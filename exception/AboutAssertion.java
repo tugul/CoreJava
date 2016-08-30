@@ -2,14 +2,15 @@ package exception;
 
 /**
  * - Assertion
- * Boolean expression that allows to test any assumption of program at that point
+ * Boolean expression that allows to test any assumption of program at certain point
  * If boolean expression returns true, nothing happens and execution continues
  * If boolean expression returns false, it throws AssertionError with optional message if provided
  * By default, it is disabled and the line is ignored
  *
  * - Syntax
  * assert boolean_expression;
- * assert boolean_expression : additional_message; (with optional message)
+ * assert boolean_expression : optional_message;
+ * boolean_expression can be optionally inside a bracket
  *
  * - Enable assertion
  * java -ea <class_name>
@@ -22,7 +23,7 @@ package exception;
  * java -disableassertions <class_name>
  *
  * Using selective enabling and disabling, assertion can be enabled for specific packages or classes only
- * It is not good practice to change state of object or variable in assert statement
+ * It is not a good practice to change state of object or variable in assert statement
  *
  */
 public class AboutAssertion {
@@ -39,7 +40,7 @@ public class AboutAssertion {
     public static void main(String[] args) {
         AboutAssertion a = new AboutAssertion();
         a.setLevel(10);
-        assert a.level != null;
+        assert (a.level != null);
 
         AboutAssertion b = new AboutAssertion();
         b.setLevel(-10);
