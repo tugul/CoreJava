@@ -15,7 +15,7 @@ In JDBC 4.0 and next versions, driver implementations are required to provide th
 <i>ResultSet</i> has following get methods which take int or String as argument indicating column:
 <ul>
 <li>getBoolean</li>
-<li>getDate</li>
+<li>getDate (returns java.sql.Date)</li>
 <li>getDouble</li>
 <li>getInt</li>
 <li>getLong</li>
@@ -26,4 +26,5 @@ In JDBC 4.0 and next versions, driver implementations are required to provide th
 </ul>
 
 Int argument indicates column number starting from 1....<br>
-String argument indicates name of column from select statement
+String argument indicates name of column from select statement<br>
+java.sql.Date, java.sql.Time, java.sql.TimeStamp objects can be converted to java.time.LocalDate, java.time.LocalTime, java.time.LocalDateTime, respectively
