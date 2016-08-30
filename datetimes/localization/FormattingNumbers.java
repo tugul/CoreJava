@@ -6,8 +6,15 @@ import java.util.Locale;
 
 /**
  * - java.text.NumberFormat
- * abstract base class for formatting and parsing numbers in any locale
- * it has many factory methods to return its instance
+ * abstract class for formatting and parsing numbers in any locale
+ * 
+ * Below static methods return NumberFormat instances dedicated to different areas.
+ * When no parameter, they choose default locale. They have additional overloaded 
+ * versions which take Locale as a parameter: 
+ * 	getNumberInstance() - general purpose number formatter
+ * 	getIntegerInstance() - integer number formatter
+ * 	getCurrencyInstance() - currency formatter
+ * 	getPercentInstance() - percentage formatter
  *
  * String format(int|long) - format given number into String using chosen formatting
  * Number parse(String) - parse number from String using chosen formatting
@@ -26,14 +33,14 @@ public class FormattingNumbers {
         NumberFormat numFormat_GER = NumberFormat.getNumberInstance(Locale.GERMANY);
         NumberFormat numFormat_FRA = NumberFormat.getNumberInstance(Locale.FRENCH);
 
-        // format(long|double) returns formatted number int String
+        // String format(long|double) - returns formatted number
         double fractional = 1223.7123;
         System.out.println(numFormat.format(fractional));            // 1,223.712
         System.out.println(numFormat_GER.format(fractional));        // 1.223,712
         System.out.println(numFormat_FRA.format(fractional));        // 1 223,712
 
-        // getIntegerInstance() - rounds decimal value when displaying
-        // getIntegerInstance(Locale)
+        // static NumberFormat getIntegerInstance() - creates formatter that rounds decimal value into integer
+        // static NumberFormat getIntegerInstance(Locale) - does same using given locale
         NumberFormat numFormat_Integer = NumberFormat.getIntegerInstance();
         NumberFormat numFormat_Integer_UK = NumberFormat.getIntegerInstance(Locale.GERMANY);
         NumberFormat numFormat_Integer_FR = NumberFormat.getIntegerInstance(Locale.FRENCH);
@@ -41,8 +48,8 @@ public class FormattingNumbers {
         System.out.println(numFormat_Integer_UK.format(fractional));        // 1.224
         System.out.println(numFormat_Integer_FR.format(fractional));        // 1 224
 
-        // getCurrencyInstance() - formats currency
-        // getCurrencyInstance(Locale)
+        // static NumberFormat getCurrencyInstance() - creates a formatter that displays currency
+        // static NumberFormat getCurrencyInstance(Locale)
         double cost = 33;
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
         NumberFormat currencyFormat_UK = NumberFormat.getCurrencyInstance(Locale.UK);
@@ -51,8 +58,8 @@ public class FormattingNumbers {
         System.out.println(currencyFormat_UK.format(cost));                 // £33.00
         System.out.println(currencyFormat_JP.format(cost));                 // ￥3
 
-        // getPercentInstance() - formats percentages
-        // getPercentInstance(Locale)
+        // static NumberFormat getPercentInstance() - creates percentage formatter
+        // static NumberFormat getPercentInstance(Locale)
         double percentage = 95;
         NumberFormat percentFormat = NumberFormat.getPercentInstance();
         NumberFormat percentFormat_UK = NumberFormat.getPercentInstance(Locale.UK);
@@ -61,7 +68,7 @@ public class FormattingNumbers {
 
         // 2. Parsing number
 
-        // parse(String) - parse string into Number object using chosen formatting
+        // Number parse(String) - parse string into Number object using chosen formatting
         // parsing continues until unknown character and it throws checked exception
         // java.text.ParseException, when first character is unknown
         String number = "78.95";
@@ -80,6 +87,5 @@ public class FormattingNumbers {
         System.out.println(numFormat.parse(val1));      // 93
         System.out.println(numFormat.parse(val2));      // -3.5
         System.out.println(numFormat.parse(val3));      // ParseException
-
     }
 }
