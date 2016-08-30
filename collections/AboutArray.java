@@ -55,9 +55,12 @@ public class AboutArray {
         int numbers[] = {2, 4, 6, 8};
         Arrays.sort(a1);
 
-        // binarySearch assumes array is already sorted
+        // binarySearch assumes array is already sorted in ascending order
+        // static int binarySearch(List<Comparable>, T)
+        // static int binarySearch(List<T>, T, Comparator<T>)
         // if found, return existing index
         // if not found, return negative sorted position where searched value's can fit
+        // if list is not ascending ordered, return value is undefined
         System.out.println(Arrays.binarySearch(numbers, 2)); // 0
         System.out.println(Arrays.binarySearch(numbers, 4)); // 1
         System.out.println(Arrays.binarySearch(numbers, 1)); // -1
