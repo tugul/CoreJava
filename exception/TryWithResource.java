@@ -38,6 +38,12 @@ class FragileBox implements Closeable {
     }
 }
 
+class BrokenBox implements AutoCloseable {
+	@Override
+	public void close() throws Exception {
+	}
+}
+
 public class TryWithResource {
     public static void main(String[] args) {
         try (Box box1 = new Box(10);
@@ -54,6 +60,10 @@ public class TryWithResource {
         finally {
             System.out.println("Oh, finally!");
         }
+        
+        try (BrokenBox bb = new BrokenBox()){	// DOES NOT COMPILE, checked exception is not handled or declared
+        }
+        finally{}
     }
 }
 /* It prints:
