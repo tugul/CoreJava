@@ -1,9 +1,12 @@
 package datetimes;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 
 /**
  * - Daylight saving
@@ -32,5 +35,16 @@ public class DaylightSaving {
         System.out.println(zonedDateTime);                      // 2016-10-30T02:30+02:00[Europe/Stockholm]
         System.out.println(zonedDateTime.plusHours(1));         // 2016-10-30T02:30+01:00[Europe/Stockholm]
         System.out.println(zonedDateTime.plusHours(2));         // 2016-10-30T03:30+01:00[Europe/Stockholm]
+        
+        // Tricky case, for real brainier
+        // Time difference from 3am --> 2am is normally -1
+        // However during exact time shift, 2am + 1h = 2am and 2am + 2h = 3am. 
+        // so difference is 2 and we are subtracting, so it is -2
+		LocalDateTime ld1 = LocalDateTime.of(2016, Month.OCTOBER, 30, 3, 0);
+		LocalDateTime ld2 = LocalDateTime.of(2016, Month.OCTOBER, 30, 2, 0);
+		ZonedDateTime zd1 = ZonedDateTime.of(ld1, ZoneId.of("Europe/Stockholm"));
+		ZonedDateTime zd2 = ZonedDateTime.of(ld2, ZoneId.of("Europe/Stockholm"));
+		long difference = ChronoUnit.HOURS.between(zd1, zd2); 	
+		System.out.println(difference); 		// -2
     }
 }
