@@ -62,8 +62,8 @@ public class PathAttributes {
         owner = FileSystems.getDefault().getUserPrincipalLookupService().lookupPrincipalByName("bbn");
         Files.setOwner(path, owner);
 
-        // Files.getAttribute(Path, String...) - get any attribute's information by single call
-        // Files.getAttribute(Path, String...) - set value to any attribute
+        // Files.getAttribute(Path, String, LinkOption...) - get any attribute's information by single call
+        // Files.setAttribute(Path, String, Object, LinkOption...) - set value to any attribute
         owner = (UserPrincipal) Files.getAttribute(path, "owner");
         Files.setAttribute(path, "owner", owner);
 
