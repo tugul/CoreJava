@@ -61,6 +61,23 @@ class OuterClass {
 }
 
 public class InnerClassExample {
+	class InnerTestingClass {
+	}
+	
+	void tester(){
+		// Instance method can directly access to inner class(instance member)
+		InnerTestingClass i = new InnerTestingClass();
+	}
+	static void staticTester(){
+		//InnerTestingClass i = new InnerTestingClass(); // DOES NOT COMPILE 
+		
+		// Static method can NOT directly access to inner class
+		// can access only through instance of the outer class
+		InnerClassExample outerObj = new InnerClassExample();
+		InnerTestingClass i1 = outerObj.new InnerTestingClass();
+		InnerTestingClass i2 = new InnerClassExample().new InnerTestingClass();
+	}
+	
     public static void main(String[] args) {
         OuterClass outerObj = new OuterClass();
         outerObj.printInnerStr();
