@@ -53,8 +53,14 @@ public class AboutCollectors {
                 .collect(Collectors.toMap(String::length, k -> k, (k1, k2) -> k1 + ":" + k2, TreeMap::new));
         System.out.println(mappedWords4);   // {4=Save:this, 5=earth}
 
+        //------------------------------------
         // Group, Partition and Map
-        // Collectors.groupingBy takes Classifier and ()
+        //------------------------------------
+        
+        // Collectors.groupingBy
+        // Collector<T, Map> groupingBy(Function<T>)
+        // Collector<T, Map> groupingBy(Function<T>, Collector<T>)
+        // Collector<T, Map> groupingBy(Function<T>, Supplier<T>, Collector<T>)
         Map<Integer, List<String>> map1 = words.stream()
                 .collect(Collectors.groupingBy(String::length));
         System.out.println(map1);  // {4=[Save, this], 5=[earth]}
@@ -67,7 +73,9 @@ public class AboutCollectors {
                 .collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toSet()));
         System.out.println(map3);  // {4=[this, Save], 5=[earth]}
 
-        // Collectors.partitioningBy take Predicate as parameter
+        // Collectors.partitioningBy
+        // Collector<T, Map<Boolean, T>> partitioningBy(Predicate)
+        // Collector<T, Map<Boolean, T>> partitioningBy(Predicate, Collector)
         Map<Boolean, List<String>> map4 = words.stream().map(x -> x.toString())
                 .collect(Collectors.partitioningBy(x -> x.length() > 4));
         System.out.println(map4);  // {false=[Save, this], true=[earth]}
@@ -84,7 +92,10 @@ public class AboutCollectors {
         System.out.println(map6); // {}
 
         // mapping, minBy, maxBy
-        Map<Integer, Optional<Character>> map7 = words.stream().map(x -> (String)x).collect(
+        // Collector mapping(Function mapper, Collector)
+        // Collector minBy(Comparator)
+        // Collector maxBy(Comparator)
+        Map<Integer, Optional<Character>> map7 = words.stream().collect(
                 Collectors.groupingBy(String::length,
                         Collectors.mapping(s -> s.charAt(0), Collectors.minBy(Comparator.naturalOrder()))));
         System.out.println(map7); // {4=Optional[S], 5=Optional[e]}
