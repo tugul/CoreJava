@@ -5,9 +5,17 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Wildcard (?) can be used to access any type, but can't change value of it.
+ * - Wildcard (?) 
+ * used to represent any type
+ * converted by JVM into Object type on compile time
+ * Collection with generic type ? can't be changed, but can be accessed
+ * 
+ * - Note on its usage
+ * Used on only left side of assignment, not on right side!
+ * Generic types on right side can be empty in diamond operator <>
+ * Generic types on right side can be completely ignored. In this case, it will be raw type
  *
- * refer: https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.html
+ * Read more: https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.html
  */
 public class GenericWildcard {
 

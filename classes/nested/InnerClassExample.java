@@ -2,6 +2,8 @@ package classes.nested;
 
 import java.io.Serializable;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 /**
  * Inner class:
  * - non-static nested class defined in the same level as instance member of a top-level class
@@ -61,6 +63,27 @@ class OuterClass {
 }
 
 public class InnerClassExample {
+	private class InnerTestingClass {
+		private int id = 1;
+	}
+	
+	void tester(){
+		// Instance method can directly access to inner class(instance member)
+		InnerTestingClass i = new InnerTestingClass();
+	}
+	static void staticTester(){
+		//InnerTestingClass i = new InnerTestingClass(); // DOES NOT COMPILE 
+		
+		// Static method can NOT directly access to inner class
+		// can access only through instance of the outer class
+		InnerClassExample outerObj = new InnerClassExample();
+		InnerTestingClass i1 = outerObj.new InnerTestingClass();
+		InnerTestingClass i2 = new InnerClassExample().new InnerTestingClass();
+		
+		// Can access all members, including private, of inner class
+		System.out.println(i1.id);	// 1
+	}
+	
     public static void main(String[] args) {
         OuterClass outerObj = new OuterClass();
         outerObj.printInnerStr();

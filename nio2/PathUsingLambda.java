@@ -11,6 +11,8 @@ import java.util.stream.Stream;
  * - Stream on nio2 API
  * Java 8 allows complex operations n nio2 to be done easier and shorter.
  * New methods are added to rely on streams
+ * 
+ * java.nio.file.Files - helper class. Read more about it in FilesHelper.java
  *
  */
 public class PathUsingLambda {
@@ -33,10 +35,12 @@ public class PathUsingLambda {
                 .map(path -> path.toAbsolutePath())
                 .forEach(System.out::println);
 
-        // Listing one-level down child directories
+        // static Files.list(Path) - return a stream of all files/directories one-level down 
+        // similar to java.io.File.listFiles() which returns an array of File objects
         System.out.println("Listing child directories");
         Files.list(usrBin).forEach(System.out::println);
 
+        // java.io.File.listFiles() is instance method and doesn't take an argument
         System.out.println("Listing child files/directories: ");
         File file = usrBin.toFile(); // only accepts directory
         file.listFiles();
@@ -48,6 +52,7 @@ public class PathUsingLambda {
         // Files.lines(path) - returns all lines in stream (lazy loading),
         // more efficient than Files.readAllLines(Path) when working with large file,
         // but doesn't necessarily mean faster always
+        // Files.readAllLines(Path) returns List<Path>, so can't be directly used with stream methods
         Files.lines(path).forEach(System.out::println);
         Files.readAllLines(path); // reads all lines into memory at once
 

@@ -27,8 +27,8 @@ public class RawType {
 		rawType = new ArrayList<String>();	// List<String> is a subtype of raw type List 
 		objects = new ArrayList<String>(); 	// DOES NOT COMPILE, List<String> is not subtype of List<Object>
 		
-		Shape triangle = new Shape();			// raw type
-		Shape<Integer> rectangle = new Shape();	// raw type
-		Shape<Integer> circle = new Shape<>();
+		Shape rawType1 = new Shape();			// raw type
+		Shape<RawType> rawType2 = new Shape();	// raw type
+		Shape<Integer> genericType = new Shape<>();
 	}
 }
