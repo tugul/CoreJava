@@ -13,10 +13,10 @@ import java.sql.*;
  * Those 2 helper classes have factory method to create connection.
  *
  * - Closing connection
- * Resourced opened in try/with statement are closed automatically
- * Closing connection closes statements and resultsets as well
- * Closing statement closes its resultsets as well
- * ResultSet is automatically closed when new SQL is run on the same statement
+ * Resources opened in try-with-resource block are closed automatically
+ * Closing Connection closes Statements and ResultSets as well
+ * Closing Statement closes its ResultSets as well
+ * ResultSet is automatically closed when new SQL is run on the same statement object
  *
  */
 public class ConnectionToDatabase {
