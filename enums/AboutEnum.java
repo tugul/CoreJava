@@ -1,8 +1,7 @@
 package enums;
 
 /**
- *
- * - Java Enum 
+ * - Java enum
  * implicitly inherits java.lang.Enum class 
  * JVM converts it to class. Its elements are instance of the enumeration class.
  * It is public(or default) static final. So can't be extended
@@ -12,10 +11,10 @@ package enums;
  * Its constructor can be only private. Making it protected or public lead compilation error
  *
  * - Enum methods:
- * values(): returns array of all elements
- * valueOf(String str) : parses String and converts to Enum element
- * name() : returns name of element in String
- * ordinal() : returns index of element
+ * values(): returns an array of all elements
+ * valueOf(String str) : parses String and converts to Enum element, case-sensitive
+ * name() : returns a name of element in String
+ * ordinal() : returns an index of element
  */
 
 enum Planet {
@@ -25,7 +24,10 @@ enum Planet {
 }
 
 enum Season {
-    Summer, Autumn, Winter { void printWeather() { System.out.println("cold");}}, Spring;
+    Summer,
+    Autumn,
+    Winter { void printWeather() { System.out.println("cold");} },
+    Spring;		// semicolon is mandatory here
     void printWeather() { System.out.println("mild"); }
 }
 
@@ -72,7 +74,7 @@ public class AboutEnum {
         switch(devOne){
         	case Manager : System.out.println("manager");
         	case 1: System.out.println("1");					// DOES NOT COMPILE, type mismatch
-        	case JobPosition.CTO : System.out.println("cto");	// DOES NOT COMPILE
+        	case JobPosition.CTO : System.out.println("cto");	// DOES NOT COMPILE, only constant name allowed without qualified name
         }
     }
 }
