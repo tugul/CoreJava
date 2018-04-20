@@ -28,6 +28,7 @@ public class AboutArray {
         int[][] b2 = new int[5][];
         int[][] b3 = new int[][];       // DOES NOT COMPILE
         int[][] b4 = new int[][5];      // DOES NOT COMPILE
+        int[][] c0[] = new int[5][][];
         int[][] c1[] = new int[5][5][];
         int[][] c2[] = new int[][][5];       // DOES NOT COMPILE
         int[][] c3[] = new int[5][][5];      // DOES NOT COMPILE
@@ -50,21 +51,21 @@ public class AboutArray {
         anotherStrings[0] = new StringBuilder();    // DOES NOT COMPILE, StringBuilder to String
         objects[0] = new StringBuilder();       // Runtime exception, StringBuilder to String
 
-
-        // Sort and search in array
+        // Sort Array
         int numbers[] = {2, 4, 6, 8};
-        Arrays.sort(a1);
+        Arrays.sort(numbers); // sorts given array and returns void
 
-        // binarySearch assumes array is already sorted in ascending order
+        // Search in Array
+        // binarySearch works by assuming array is already sorted in ascending order
         // static int binarySearch(List<Comparable>, T)
         // static int binarySearch(List<T>, T, Comparator<T>)
         // if found, return existing index
-        // if not found, return negative sorted position where searched value's can fit
-        // if list is not ascending ordered, return value is undefined
-        System.out.println(Arrays.binarySearch(numbers, 2)); // 0
-        System.out.println(Arrays.binarySearch(numbers, 4)); // 1
-        System.out.println(Arrays.binarySearch(numbers, 1)); // -1
-        System.out.println(Arrays.binarySearch(numbers, 3)); // -2
-        System.out.println(Arrays.binarySearch(numbers, 10)); // -5
+        // if not found, return negative sorted position(not index) where searched value would fit
+        // if not ordered ascendingly, returned value is unpredictable
+        System.out.println(Arrays.binarySearch(numbers, 2)); // 0, found at 0
+        System.out.println(Arrays.binarySearch(numbers, 4)); // 1, found at 1 
+        System.out.println(Arrays.binarySearch(numbers, 1)); // -1, not found, potential position 1
+        System.out.println(Arrays.binarySearch(numbers, 3)); // -2, not found, potential position 2
+        System.out.println(Arrays.binarySearch(numbers, 9)); // -5, not found, potential position 5
     }
 }

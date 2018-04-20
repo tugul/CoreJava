@@ -61,14 +61,14 @@ public class AboutOptional {
         Optional obj1 = (value== null) ? Optional.empty(): Optional.of(value);
         Optional obj2 = Optional.ofNullable(value);
         
-        System.out.println(Optional.of(null));			// throws NullPointerException
+//        System.out.println(Optional.of(null));			// throws NullPointerException
         System.out.println(Optional.ofNullable(null));	// Optional.empty 
 
         System.out.println(findAverage(10, 30));    // Optional[20.0]
         System.out.println(findAverage());          // Optional.empty
 
         Double avg1 = findAverage(10, 20).get();    // 20.0
-        Double avg2 = findAverage().get();          // throws NoSuchElementException
+        //Double avg2 = findAverage().get();          // throws NoSuchElementException
         Double avg3 = findAverage().orElse(Double.NaN);  // to avoid this exception thrown      
 
         // boolean isPresent() 
@@ -80,6 +80,10 @@ public class AboutOptional {
         // void ifPresent(Consumer<T>) 
         // It runs Consumer logic if value is present, otherwise won't run
         emptyOptional.ifPresent(System.out::println);   // no output
+        
+    	Optional<Integer> add = Optional.of(2);
+    	System.out.println(add);				// Optional[2]
+    	add.ifPresent(System.out::println); 	// 2
 
         System.out.println(emptyOptional.orElse(null));			// null
         System.out.println(emptyOptional.orElse(Double.NaN));	// Nan

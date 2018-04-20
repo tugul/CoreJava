@@ -12,23 +12,23 @@ import java.io.Serializable;
  * can have any access modifier like inner class
  * outer class can directly access to its static members, but to its instance members only through its instance
  */
-class OuterClass {
+class OuterClassEx{
     private static String args = " args";
     private String mainGot = " main got ";
 
     protected static class StaticNestedClass  {
-        protected OuterClass outerObj;
+        protected OuterClassEx outerObj;
         static StaticNestedClass nestedObj;
 
         public static void main(String... args) {
             StaticNestedClass me = new StaticNestedClass();
-            me.outerObj = new OuterClass();
-            System.out.println("Static nested class's" + me.outerObj.mainGot + args.length + OuterClass.args);
+            me.outerObj = new OuterClassEx();
+            System.out.println("Static nested class's" + me.outerObj.mainGot + args.length + OuterClassEx.args);
             me.sayMyName();
         }
 
         void sayMyName(){
-            System.out.println("I received arguments through " + new OuterClass().mainGot);
+            System.out.println("I received arguments through " + new OuterClassEx().mainGot);
         }
     }
 
@@ -39,12 +39,19 @@ class OuterClass {
 }
 
 public class StaticNestedClassExample {
+	static class Testing{
+	}
+	
+	void tester(){
+		Testing tt = new Testing();
+	}
+	
     public static void main(String[] args) {
-        OuterClass.StaticNestedClass staticNestedObj = new OuterClass.StaticNestedClass();
+        OuterClassEx.StaticNestedClass staticNestedObj = new OuterClassEx.StaticNestedClass();
         staticNestedObj.main(args);                 // Static nested class's main got X args
 
-        OuterClass outerObj = new OuterClass();
-        OuterClass.StaticNestedClass nestedObj = outerObj.getStaticNestedObj();
+        OuterClassEx outerObj = new OuterClassEx();
+        OuterClassEx.StaticNestedClass nestedObj = outerObj.getStaticNestedObj();
         System.out.println(nestedObj == null);  // true
 
         outerObj.getStaticNestedObj().main(args);   // Static nested class's main got X args

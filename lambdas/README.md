@@ -8,13 +8,12 @@ Lambda expression can access to static and instance variables, and local variabl
 
 Method reference
 ---
-New feature in Java 8 which makes lambda expression even easier to write. Basically, it is a short syntax containing no parameter declaration or implementation logic which are inferred by compiler. The implementation is defined in somewhere else, so it promotes reusability of code.
+New feature in Java 8 which makes a lambda expression even easier to write. Basically, it is a short syntax containing no parameter declaration or implementation logic which is inferred by compiler. The implementation is defined in somewhere else, so it promotes re-usability of code.
 
 
 Functional interface
 ---
-Functional interface is an interface that has one abstract method. Below is commonly used built-in functional 
-interfaces introduced in Java 8. 
+Functional interface is an interface that has only one abstract method while it can have any number of static or default methods. Below is commonly used functional interfaces built-in in Java 8. 
 
 
 Interface | Returns | Method | Argument | Primitive Specialization
