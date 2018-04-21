@@ -1,15 +1,14 @@
 package varargs;
 
 /**
- * Accessing to varargs, same like array index
+ * Like an array, accessing to varargs goes with index
  */
 public class AccessVararg {
-    public static void doIt(int ... nums){
+    static void doIt(int ... nums){
         System.out.println(nums[1]);
     }
 
     public static void main(String[] args) {
-        // Prints 5
-        doIt(4,5,6);
+        doIt(4,5,6); // Prints 5
     }
 }
