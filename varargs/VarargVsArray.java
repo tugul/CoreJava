@@ -1,18 +1,19 @@
 package varargs;
 
 /**
- * Although Java treats varargs as array, there is a small difference when calling:
+ * Although Java treats varargs as array, there is a small difference when calling
  */
 public class VarargVsArray {
-    // Both method can't compiled together
+    // Both can't be compiled together
+    // compiler sees they have same signature
     static void fly(int[] params){ }
     static void fly(int... params){ }
 
     public static void main(String[] args) {
-        // calls Vararg
+        // calls only one with Vararg
         fly(1, 2, 3);
 
-        // can call both
-        fly(new int[] {1, 2, 2});
+        // can call any of above two
+        fly(new int[] {1, 2, 3});
     }
 }
