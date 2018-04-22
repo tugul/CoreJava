@@ -9,7 +9,8 @@ package methods;
  * But return type, access modifier, optional specifier or exception list are irrelevant
  *
  * - In case of autoboxing
- * Java call most specifically matching method. If can't find, it looks for next ONE level closer one
+ * Java calls most specifically matched one from overloaded methods
+ * If can't find, it looks for next one(only ONE level upper) 
  * Generally, it follows below one of below step to match parameter:
  * : Exact match by parameter type
  * : Match with superclass type
@@ -40,9 +41,11 @@ public class MethodOverload {
 
     public static void main(String[] args) {
         fly(2);                 // 10  (int miles)
+        fly((byte)2);           // 10  (int miles) byte --> int (larger primitive type)
         fly(new Integer(1));    // 30  (Integer miles)
         fly(2L);                // 100 (Long miles) long --> Long
         fly(2f);                // 600 (Number miles) float --> Float (extends Number)
+        fly(2.);                // 600 (Number miles) double --> Double (extends Number)
         fly("2");               // 900 (Object miles) String --> Object
         fly(true);              // 900 (Object miles) boolean --> Boolean (extends Object)
         fly(new int[]{});       // 900 (Object miles) Array --> Object
