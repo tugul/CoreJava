@@ -1,34 +1,36 @@
 package strings;
 
 /**
- * - StringBuilderCapacity is mutable while String is immutable
- * - Capacity/size are same for String, but they can be different in StringBuilderCapacity object
- * - Unless capacity is given, StringBuilder create object with capacity of 16 empty elements (plus given string param)
+ * Quick facts:
+ * - StringBuilder is mutable while String is immutable
+ * - Capacity/size are same for String, but they can be different in StringBuilder object
+ * - Unless capacity is given, StringBuilder create object with capacity of 16 empty elements (plus string size if string param is given)
+ * - String, StringBuilder both have length() method
  */
 public class StringBuilderCapacity {
     public static void main(String[] args) {
         StringBuilder a = new StringBuilder("abc"); // 16 + 3
         StringBuilder b = new StringBuilder(50);    // 50
         StringBuilder c = new StringBuilder();      // 16
-        a.append("defg");
+        a.append("def");
 
         System.out.println(a);
-        System.out.println("Length: " + a.length());        // abcdefg = 7
-        System.out.println("Capacity a: " + a.capacity());  // default(16)  abc(3) = 19
+        System.out.println("Capacity a: " + a.capacity());  // default(16) + abc(3) = 19
+        System.out.println("Length a: " + a.length());      // abcdefg = 6
         System.out.println("Capacity b: " + b.capacity());  // given size 50
-        System.out.println("Capacity c: " + c.capacity());  // default(16)  empty = 16
-
-        // String, StringBuilder both have length() method
+        System.out.println("Length b: " + b.length());      // empty content
+        System.out.println("Capacity c: " + c.capacity());  // default is 16, empty means capacity is 16
+        System.out.println("Length c: " + c.length());      // empty content
 
 /*
         Below is output
 
-        abcdefg
-        Length: 7
         Capacity a: 19
+        Length a: 6
         Capacity b: 50
+        Length b: 0
         Capacity c: 16
+        Length c: 0
 */
     }
-
 }
