@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Generic types not declared in class must be declared in method declaration
  * - Multiple types can be allowed
- * - Any letter allowed upper or lower
+ * - Any letter with upper or lowercase is allowed
  * - Generic type declared in class can not be used in static method or field
  * but of course, static method can define generic type in its own level
  */
@@ -21,6 +21,7 @@ public class GenericMethod <G> {
     public static void genericMethod3(G g) {}   // DOES NOT COMPILE
     public static G garag;                      // DOES NOT COMPILE, generic type can't be used in static context
 
+    // Here static method defines own generic type which must be different than Class's generic types
     public static <Q> void fillMe(List<Q> list, Q value) {
         for (int i = 0; i < list.size(); i++)
             list.set(i, value);
@@ -35,7 +36,7 @@ public class GenericMethod <G> {
         for (Integer each : ints)
             System.out.println(each);
 
-        // Optional syntax for specifying types in generic method call
+        // Specifying types in generic method call is optional
         GenericMethod gm = new GenericMethod();
         gm.checkStat("string");
         gm.<Number, String, Integer>checkStat("string"); // specifying types on method call
