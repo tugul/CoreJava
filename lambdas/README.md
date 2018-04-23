@@ -14,7 +14,7 @@ New feature in Java 8 which makes a lambda expression even easier to write. Basi
 
 Functional interface
 ---
-Functional interface is an interface that has **only one abstract method** while it can have any number of static or default methods. Belows are commonly used functional interfaces built-in in Java 8. 
+Functional interface is an interface that has **only one abstract method** while it can have any number of static or default methods. This single abstract method is called a **functional method**. Belows are commonly used functional interfaces built-in in Java 8.
 
 
 Interface | Returns | Method | Argument | Primitive Specialization
