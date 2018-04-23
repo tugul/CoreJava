@@ -36,10 +36,10 @@ interface IDo {
     static int goFor() { return 0; }
 }
 
-interface IGoDo1 extends IGo, IDo {
-    // DOES NOT COMPILE, default methods conflict
-    // static methods don't conflict
-}
+// interface IGoDo1 extends IGo, IDo {
+//     // DOES NOT COMPILE, default methods conflict
+//     // static methods don't conflict
+// }
 
 interface IGoDo2 extends IGo, IDo {
     // Resolution is to override conflicting default method
@@ -50,14 +50,17 @@ public class ConflictingMethods {
     public static void main(String[] args) {
     	IMe aa = new Lost();
     	Lost ab = new Lost();
-    	IMe.me();
-    	ab.me();
+
+		aa.me();	// DOES NOT COMPILE, static method must be called on interface only
+    	IMe.me();	// IME
+		((Lost)aa).me();	// I am lost
+    	ab.me();			// I am lost
     	
-    	Wondering.me();
-    	new Wondering().me();
-    	IMe x = new Wondering();
-    	((Wondering)x).me();
-    	x.me();		// DOES NOT COMPILE
+    	Wondering.me();				// I am wondering...
+    	new Wondering().me();		// I am wondering...
+    	IMe x = new Wondering();	
+    	((Wondering)x).me();		// I am wondering...
+    	//x.me();		// DOES NOT COMPILE
     	//aa.me();
     }
 }
