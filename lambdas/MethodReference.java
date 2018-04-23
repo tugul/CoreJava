@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.BiPredicate;
 import java.util.function.Supplier;
 
 /**
@@ -61,10 +62,11 @@ public class MethodReference {
     
     public static String getStr() { return "no argument";}
     public static String getStr(Integer i){ return i + " is argument"; }
+    public static String getStr(String st){ return st + " is argument"; }
 
     public static void main(String[] args) {
         // 1. Calling static method
-    	Consumer<List<Integer>> lambdaExp1 = list -> Collections.sort(list);
+        Consumer<List<Integer>> lambdaExp1 = list -> Collections.sort(list);
         Consumer<List<Integer>> methodRef1 = Collections::sort;
         runConsumer(methodRef1);
 
@@ -77,10 +79,12 @@ public class MethodReference {
         // 3. Calling instance method on instance to be determined at runtime
         Predicate<String> lambdaExp3 = str -> str.isEmpty();
         Predicate<String> methodRef3 = String::isEmpty;
+        //Predicate<String> methodRef = str::isEmpty; // DOES NOT COMPILE, 1 argument is missing, make it BiPredicate to compile
         runPredicate(methodRef3);	// true
         
         BiPredicate<String, String> lambdaExp31 = (s, prefix) -> s.startsWith(prefix);
         BiPredicate<String, String> methodRef31 = String::startsWith;
+        //BiPredicate<String, String> methodRef31 = strObj::startsWith; DOES NOT COMPILE, two arguments are required
 
         // 4. Calling constructor
         Supplier<LinkedList> lambdaExp4 = () -> new LinkedList();
@@ -88,14 +92,20 @@ public class MethodReference {
         runSupplier(methodRef4);	// []
         runSupplier(HashMap::new);	// {}
         
+        // Tricky here
         runConsumer(MethodReference::new);	// calls MethodReference(List<Integer> list)
         runFunc(MethodReference::new);		// calls MethodReference(Integer i, String str)
+        // Those constructors return nothing and take parameters which are respectively same as below methods requiring
+        Consumer<List<Integer>> c1 = MethodReference::new;
+        MyFunctionalInteface mfi = MethodReference::new;
         
         // Referring to overloaded methods
-        Supplier<String> supplier = MethodReference::getStr;
-        Function<Integer, String> function = MethodReference::getStr;
+        Supplier<String> supplier = MethodReference::getStr;            // calls one without parameter
+        Function<Integer, String> function = MethodReference::getStr;   // calls one with Integer parameter
+        Function<String, String> functionS = MethodReference::getStr;   // calls one with String parameter
         System.out.println(supplier.get());			// no argument
         System.out.println(function.apply(5));		// 5 is argument
+        System.out.println(functionS.apply("A"));	// A is argument
     }
 }
 
@@ -110,5 +120,6 @@ true
 [3, 1, 12, 5, 4]
 no argument
 5 is argument
+A is argument
  */
 
