@@ -78,7 +78,7 @@ public class AboutStream {
         // in other words, it always creates new value on iterating each element
         // T reduce(T t, BinaryOperator<T> operator)
         Stream<String> letters = Stream.of("a", "b", "c");
-        System.out.println(letters.reduce("ABC: ", (s1, s2) -> s1 + s2));  				// "ABC: abc", using lambda
+        System.out.println(letters.reduce("ABC: ", (s1, s2) -> s1 + s2));  		// "ABC: abc", using lambda
         System.out.println(Stream.of("a", "b", "c").reduce("ABC: ", String::concat));  	// "ABC: abc", using method reference
 
         // Optional<T> reduce(BinaryOperator<T> accumulator)
@@ -101,7 +101,7 @@ public class AboutStream {
         System.out.println(sortedSet1 + " " + sortedSet2 + ", " + set);  // [aia, bia, cia] [aia, bia, cia], [aia, cia, bia]
 
         // ----------------------------
-        // 2. Intermediate operations, take stream/return stream
+        // 3. Intermediate operations, take stream/return stream
         // ----------------------------
 
         // filter
