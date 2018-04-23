@@ -7,12 +7,12 @@ package generics;
  * The letters representing types must match literally when used! (regardless of inherited types)
  *
  * Limitations on generic types:
- * - can't call constructor of generic type: new T()
- * - can't create array of static type: new T[]
+ * - can't instantiate object with generic type: new T()
+ * - can't instantiate arrays with generic type: new T[]
  * - can't call instanceof: obj instanceof T
  * - can't use primitive as generic type, instead use their wrapper classes
- * - can't create static variable with generic type
- * - can't create static method with generic type defined in generic class definition
+ * - can't create STATIC variable with generic type
+ * - can't create STATIC method with generic type defined in generic class definition
  */
 
 class GeneralWithTwo <T, e> {
