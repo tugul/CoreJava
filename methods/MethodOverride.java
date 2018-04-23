@@ -42,11 +42,12 @@ class B extends A {
         System.out.println("Instance method in B");
     }
 
+    // It is overriding
     void anotherInstanceMethod() {
         staticMethod();
     }
 
-    // It is overriding
+    // Not override private method. so it is a new method
     int getIntValue(){
         return 1;
     }
@@ -60,11 +61,13 @@ public class MethodOverride {
 
         new B().instanceMethod();                   // Instance method in B
         new B().staticMethod();                     // Static method in B
-        System.out.println(new B().getIntValue());  // 1
 
         new A().instanceMethod();                   // Instance method in A
         new A().staticMethod();                     // Static method in A
+
+        System.out.println(new B().getIntValue());  // 1
         //System.out.println(new A().getIntValue());  // DOES NOT COMPILE, inaccessible as it is private
+        //System.out.println(a.getIntValue());        // DOES NOT COMPILE, inaccessible as it is private
 
         System.out.println();
 
