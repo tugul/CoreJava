@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * - Wildcard (?) 
  * used to represent any type
- * converted by JVM into Object type on compile time
+ * like generic type, it is converted by JVM into Object type on compile time
  * Collection with generic type ? can't be changed, but can be accessed
  * 
  * - Note on its usage
