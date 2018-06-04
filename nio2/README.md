@@ -1,15 +1,15 @@
+# NIO (Non-blocking IO)
 
-**Java.nio** package is initially started to replace java.io package(Non-blocking io), but hasn't taken off until second version of nio API in Java 7 which is called nio2.
-NIO2 actually intended to replace java.io.File class and its related interactions. 
+``java.nio`` package is initially started to replace ``java.io`` package(Non-blocking io), however it hasn't taken off until the second version of nio API in Java 7 which is called **nio2**. **NIO2** actually intended to replace ``java.io.File`` class and its related interactions. 
 
-Paths - factory/helper class for Path
-Path refers to resource on filesystem which doesn't have to exist. And most of its operations doesn't require too. 
+- ``java.nio.file.Path`` refers to resource on filesystem which doesn't have to exist. And most of its operations don't require it too. 
+- ``java.nio.file.Paths`` is a factory/helper class for ``Path``
+
  
-NIO2 API has following advantages over IO API:
+**NIO2** API has following advantages over old **IO** API:
 * supports file-system dependent attributes (DOS, POSIX)
-* allows you traverse directory hierarchy directly
+* allows you directly traverse directory hierarchy
 * supports symbolic link in file system
-* when reading multiple attributes of a file, it's faster
- 
+* faster when reading multiple attributes of a file 
 
 

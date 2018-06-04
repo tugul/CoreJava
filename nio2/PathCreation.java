@@ -11,20 +11,20 @@ import java.nio.file.Paths;
  * - java.nio.file.Path
  * primary entry point of java.nio package
  * representation of path(file/directory) in a file system
- * Path is system dependent, can't compare path from DOS/Windows with one from Unix based systems
- *
- * Path object can be created various ways 
+ * system dependent, can't compare path from DOS/Win with one from POSIX/Unix based systems
  *
  */
 public class PathCreation {
     public static void main(String[] args) throws URISyntaxException {
 
+        // Path object can be created various ways 
+
         // 1. Create Path using Paths helper class
         Path path1 = Paths.get("README.md");
         Path path2 = Paths.get("..", "nio2/README.md");  // constructing paths
 
-        System.out.println(path1.toAbsolutePath());
-        System.out.println(path2.toAbsolutePath());
+        System.out.println(path1.toAbsolutePath());     // /home/workspace/CoreJava/README.md
+        System.out.println(path2.toAbsolutePath());     // /home/workspace/CoreJava/../nio2/README.md
 
         // 2. Construct Path from URI resource
         Path path3 = Paths.get(new URI("file:/c:/user/google/docs")); // refer to URI based resource
@@ -38,7 +38,7 @@ public class PathCreation {
         //Path path5 = fileSystem.getPath("README.md");
 
         // 5. Create path from File object. File to Path, and vice versa
-        File file = new File("CoreJava/src/nio2/README.md");
+        File file = new File("CoreJava/nio2/README.md");
         Path path6 = file.toPath();
         file = path6.toFile();
 
