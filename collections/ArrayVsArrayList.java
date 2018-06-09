@@ -8,8 +8,8 @@ import java.util.*;
  * Dimension: Array can be multi-dimensional while ArrayList is only single dimensional
  * Primitive: ArrayList can't store primitives, instead can store their wrapper objects 
  * Generics: ArrayList supports generics, so it is type-safe
- * Adding an element: Array element is added through asignment operator, while ArrayList use add() method 
- * Length: Array has length variable while ArraList has size() method
+ * Adding an element: Array element is added through assignment operator, while ArrayList use add() method 
+ * Length: Array has length variable while ArrayList has size() method
  * Performance: Array is faster while ArrayList is bit slower, especially when comparing
  * Sorting: 
  * 	Array      : Arrays.sort(T[] a);
