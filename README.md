@@ -17,7 +17,7 @@ Interface can have non-abstract concrete method if they are **default** or **sta
 Non-blocking io API. Read [more](https://github.com/tugul/CoreJava/tree/master/nio2)
 
 ## Date Time API
-Working with dates in older java version was hard and often had to use external libraries. However, new API introduced many more features and provides easy of use: For example ``LocalDate``, ``LocalTime``, ``LocalDateTime``, ``ZonedDateTime``. Read [more](https://github.com/tugul/CoreJava/tree/master/datetimes)
+Working with dates in older JDK was painful and developers often had to use external libraries. However, new API addresses the issues and provides clarity and flexibility to its core through ``java.time`` package: For example ``LocalDate``, ``LocalTime``, ``LocalDateTime``, ``ZonedDateTime``. Read [more](https://github.com/tugul/CoreJava/tree/master/datetimes)
 
 ## Collection API improvement
 New method ``forEach()`` and more . Read [more](https://github.com/tugul/CoreJava/tree/master/collections)
