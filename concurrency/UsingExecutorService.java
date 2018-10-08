@@ -3,17 +3,17 @@ package concurrency;
 import java.util.concurrent.*;
 
 /**
- * - ExecutorService
- * interface with methods to take/execute tasks and provides many useful features (thread pooling, scheduling etc.)
- * necessary to shut down the service instance, otherwise application will hang
- * extends functional interface Executor (with void execute(Runnable))
+ * ExecutorService
+ * - interface with methods to take/execute tasks and provides many useful features (thread pooling, scheduling etc.)
+ * - necessary to shut down the service instance, otherwise application will hang
+ * - extends functional interface Executor (with void execute(Runnable))
  *
- * - Methods to submit a task to a thread
- * Asynchronous (doesn't wait for given task to finish)
+ * Methods to submit a task to a thread
+ * - Asynchronous (doesn't wait for given task to finish)
  * 1. execute(Runnable) - returns nothing
  * 2. submit(Runnable) - returns Future<?>
  * 3. submit(Callable<T>) - returns Future<T>
- * Synchronous (meaning that waits for given tasks to finish)
+ * - Synchronous (meaning that waits for given tasks to finish)
  * 4. invokeAll() takes a collection of Callable tasks and returns collection of Future objects once all are finished
  * 5. invokeAny() takes a collection of Callable tasks and returns single Future object once any of them is finished
  *

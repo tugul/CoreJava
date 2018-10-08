@@ -6,7 +6,7 @@ package interfaces;
  * - Default method may only be declared in interface, not any class
  * - Method marked default must have body/implementation
  * - Like other interface method, it is assumed to be public
- * - Marking it abstract, static or final lead to compilation error
+ * - Marking it abstract, static or final leads to compilation error
  * - Optional to override default method in implementing class
  */
 interface ICan {

@@ -9,11 +9,13 @@ package interfaces;
  * - Reference to the interface name must be used to use
  */
 interface IHaveStatic1 {
-    static void sayMyName() { System.out.println("Interface One"); }
+    String name = "Interface One"
+    static void sayMyName() { System.out.println(name); }
 }
 
 interface IHaveStatic2 {
-    static void sayMyName() { System.out.println("Interface Two"); }
+    String name = "Interface Two"
+    static void sayMyName() { System.out.println(name); }
 }
 
 public class StaticMethod implements IHaveStatic1, IHaveStatic2 {

@@ -3,9 +3,9 @@ package classes;
 /**
  * Static members can be accessed not only through class name,
  * but also through instance of the class.
- * Even after reference of the instance points to NULL
+ * Even when reference of the instance points to NULL
  *
- * But instance members can't be accessed if reference is points to NULL
+ * But instance members can't be accessed if reference points to NULL
  */
 
 class A {
@@ -27,5 +27,9 @@ public class StaticMember {
         a = null;
         System.out.println(a.staticField);      // 0
         System.out.println(a.instanceField);    // NullPointerException
+
+        A b;
+        System.out.println(b.staticField);      // 0
+        System.out.println(A.staticField);      // 0
     }
 }
