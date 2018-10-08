@@ -17,7 +17,7 @@ import java.util.List;
  *
  * Read more: https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.html
  */
-public class GenericWildcard {
+public class Wildcard {
 
     public static void printCollection1(Collection<Object> col) {
         for (Object o : col)
