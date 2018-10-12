@@ -21,7 +21,7 @@ import java.util.stream.IntStream;
  * Optional<T> empty() - creates optional object with empty value in it
  * 
  * - Caller of a method returning Optional
- * should use ifPresent to check value is present or not
+ * recommended to call isPresent to check value is present or not before accessing value
  * T get() - returns the wrapped value or throws NoSuchElementException if the value is empty/absent
  * boolean isPresent() - check if value is present or not
  * void ifPresent(Consumer<T>) - call Consumer parameter if value is present
